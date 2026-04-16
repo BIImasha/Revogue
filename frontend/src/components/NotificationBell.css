@@ -1,0 +1,151 @@
+/* ── BELL WRAPPER ── */
+.notification-wrapper {
+  position: relative;
+  display:  inline-block;
+}
+
+/* ── BELL BUTTON ── */
+.bell-btn {
+  background:  none;
+  border:      none;
+  cursor:      pointer;
+  font-size:   22px;
+  padding:     4px 8px;
+  position:    relative;
+  transition:  transform 0.2s;
+}
+
+.bell-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ── RED BADGE (unread count) ── */
+.bell-badge {
+  position:         absolute;
+  top:              -2px;
+  right:            0px;
+  background:       #e53935;
+  color:            #fff;
+  font-size:        10px;
+  font-weight:      700;
+  min-width:        18px;
+  height:           18px;
+  border-radius:    9px;
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  padding:          0 4px;
+}
+
+/* ── DROPDOWN CARD ── */
+.notification-dropdown {
+  position:      absolute;
+  top:           calc(100% + 10px);
+  right:         0;
+  width:         320px;
+  background:    #fff;
+  border-radius: 12px;
+  box-shadow:    0 8px 30px rgba(0, 0, 0, 0.15);
+  z-index:       9999;
+  overflow:      hidden;
+}
+
+/* ── DROPDOWN HEADER ── */
+.notification-header {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     center;
+  padding:         14px 16px;
+  border-bottom:   1px solid #f0f0f0;
+}
+
+.notification-header h4 {
+  margin:      0;
+  font-size:   15px;
+  font-weight: 600;
+}
+
+.mark-read-btn {
+  background:  none;
+  border:      none;
+  color:       #888;
+  font-size:   12px;
+  cursor:      pointer;
+  padding:     0;
+}
+
+.mark-read-btn:hover {
+  color: #000;
+}
+
+/* ── NOTIFICATION LIST ── */
+.notification-list {
+  max-height:  360px;
+  overflow-y:  auto;
+}
+
+/* ── SINGLE NOTIFICATION ITEM ── */
+.notification-item {
+  display:     flex;
+  align-items: flex-start;
+  gap:         10px;
+  padding:     12px 16px;
+  border-bottom: 1px solid #f9f9f9;
+  cursor:      pointer;
+  transition:  background 0.15s;
+}
+
+.notification-item:hover {
+  background: #f9f9f9;
+}
+
+/* Unread notification has light background */
+.notification-item.unread {
+  background: #f0f7ff;
+}
+
+.notification-item.unread:hover {
+  background: #e3f0ff;
+}
+
+/* ── NOTIFICATION ICON ── */
+.notif-icon {
+  font-size:   20px;
+  margin-top:  2px;
+  flex-shrink: 0;
+}
+
+/* ── NOTIFICATION TEXT ── */
+.notif-content {
+  flex: 1;
+}
+
+.notif-message {
+  font-size:   13px;
+  color:       #333;
+  margin:      0 0 4px 0;
+  line-height: 1.4;
+}
+
+.notif-time {
+  font-size: 11px;
+  color:     #aaa;
+}
+
+/* ── UNREAD DOT ── */
+.unread-dot {
+  width:            8px;
+  height:           8px;
+  background:       #1976d2;
+  border-radius:    50%;
+  flex-shrink:      0;
+  margin-top:       5px;
+}
+
+/* ── EMPTY STATE ── */
+.notification-empty {
+  text-align: center;
+  padding:    30px 20px;
+  color:      #aaa;
+  font-size:  13px;
+}

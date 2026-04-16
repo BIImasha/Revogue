@@ -1,0 +1,52 @@
+import React from "react";
+import "./footer.css";
+import { FaFacebookF, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="footer-container">
+        
+        {/* LEFT SECTION */}
+        <div className="footer-left">
+          <h2 className="footer-logo">REVOGUE</h2>
+          <p>
+            At Revogue, elegance finds purpose in unity. Join our community of
+            conscious fashion lovers who swap, share, and celebrate sustainable
+            style.
+          </p>
+        </div>
+
+        {/* MIDDLE SECTION */}
+        <div className="footer-middle">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>Home</li>
+            <li>Items</li>
+            <li>Upload</li>
+            <li>Requests</li>
+            <li>Profile</li>
+          </ul>
+        </div>
+
+        {/* RIGHT SECTION */}
+        <div className="footer-right">
+          <h3>Connect With Us</h3>
+          <div className="social-icons">
+            <FaFacebookF />
+            <FaInstagram />
+            <FaYoutube />
+            <FaTwitter />
+          </div>
+        </div>
+
+      </div>
+
+      <div className="footer-bottom">
+        © 2026 Revogue. All rights reserved.
+      </div>
+    </footer>
+  );
+}
+
+export default Footer;

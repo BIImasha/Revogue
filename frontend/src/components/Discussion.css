@@ -1,0 +1,156 @@
+/* ── DISCUSSION CONTAINER ── */
+.discussion-container {
+  margin-top: 16px;
+  border-top: 2px solid #f0f0f0;
+  padding-top: 16px;
+}
+
+.discussion-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── MESSAGES AREA ── */
+.messages-area {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 14px;
+  max-height: 280px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── SINGLE MESSAGE BUBBLE ── */
+.message-bubble {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+}
+
+/* My messages appear on right */
+.message-bubble.mine {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+/* Other person's messages appear on left */
+.message-bubble.theirs {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.message-sender {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.message-text {
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* My message bubble — dark */
+.message-bubble.mine .message-text {
+  background: #000;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+/* Their message bubble — light */
+.message-bubble.theirs .message-text {
+  background: #fff;
+  color: #333;
+  border: 1px solid #e0e0e0;
+  border-bottom-left-radius: 4px;
+}
+
+.message-time {
+  font-size: 10px;
+  color: #aaa;
+  margin-top: 3px;
+}
+
+/* ── NO MESSAGES YET ── */
+.no-messages {
+  text-align: center;
+  color: #aaa;
+  font-size: 13px;
+  padding: 20px 0;
+}
+
+/* ── INPUT AREA ── */
+.message-input-area {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.message-input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+  resize: none;
+  font-family: inherit;
+  max-height: 80px;
+  overflow-y: auto;
+}
+
+.message-input:focus {
+  border-color: #000;
+}
+
+.send-btn {
+  padding: 10px 18px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.send-btn:hover {
+  background: #333;
+}
+
+.send-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* ── TOGGLE BUTTON ── */
+.discussion-toggle-btn {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.discussion-toggle-btn:hover {
+  background: #333;
+}

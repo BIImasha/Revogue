@@ -1,0 +1,109 @@
+/* Main Navbar Container */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 80px;
+
+  background-color: rgba(244, 244, 244, 0.95);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Logo */
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #769376; /* Sage Green */
+  cursor: pointer;
+}
+.logo-img {
+  height: 120px;   /* adjust size */
+  width: auto;     /* maintain aspect ratio */
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* Right Side Container */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+/* Remove default link styles */
+.nav-links li a {
+  font-size: 20px;
+  color: #4A7C59; /* Darker Sage */
+  text-decoration: none;   /* remove underline */
+  cursor: pointer;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+/* Remove purple visited color */
+.nav-links li a:visited {
+  color: #4A7C59; /* Darker Sage */
+}
+
+/* Hover effect */
+.nav-links li a:hover {
+  color: #4A7C59; /* Darker Sage */
+}
+
+/* Hover Effect */
+.nav-links li:hover {
+  color: #4A7C59; /* Darker Sage */
+}
+
+/* Optional Underline Hover Animation */
+.nav-links li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: #4A7C59; /* Darker Sage */
+  transition: 0.3s ease;
+}
+
+.nav-links li:hover::after {
+  width: 100%;
+}
+
+/* Login Button */
+/* Login Button - Updated with Specificity */
+button.login-btn, 
+.login-btn {
+  display: inline-block;
+  padding: 8px 22px;
+  background-color:#2D5016 !important; /* Forest Green forced */
+  color: #ffffff !important;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  outline: none;
+}
+
+/* Button Hover State */
+button.login-btn:hover,
+.login-btn:hover {
+  background-color:#769376 !important; /* Sage Green forced */
+}

@@ -1,0 +1,137 @@
+.items-container {
+  padding: 40px 60px;       /* reduced from 80px */
+  background-color: #F4F4F4;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.items-container h1 {
+  font-size: 32px;
+  color: #4A7C59;
+  margin-bottom: 10px;
+}
+
+.items-subtitle {
+  font-size: 18px;
+  color: #2c2b2b;
+  margin-bottom: 30px;     /* reduced from 40px */
+}
+
+/* FILTER BUTTONS */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;               /* reduced from 15px */
+  margin-bottom: 30px;     /* reduced from 50px */
+}
+
+.filter-btn {
+  padding: 6px 14px;       /* reduced from 8px 18px */
+  border-radius: 20px;
+  border: 1px solid #769376;
+  background: white;
+  color: #769376;
+  cursor: pointer;
+  font-size: 13px;         /* slightly smaller text */
+  transition: 0.3s;
+}
+
+.filter-btn:hover {
+  background-color: #769376;
+  color: white;
+}
+
+.filter-btn.active {
+  background-color: #769376;
+  color: white;
+}
+
+/* ITEMS GRID */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* 4 columns instead of 3 */
+  gap: 16px;                              /* reduced from 30px */
+}
+
+/* ITEM CARD */
+.item-card {
+  background: white;
+  padding: 12px;             /* reduced from 20px */
+  border-radius: 10px;       /* reduced from 12px */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+          /* text aligned left looks cleaner */
+}
+
+.item-card:hover {
+  transform: translateY(-4px);  /* reduced from -6px */
+}
+
+/* ITEM CARD TEXT */
+.item-card h3 {
+  font-size: 14px;           /* smaller title */
+  margin: 8px 0 4px 0;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  text-align: center;  /* adds ... if title too long */
+}
+
+.item-card p {
+  font-size: 12px;           /* smaller text */
+  color: #666;
+  margin: 2px 0;
+}
+
+/* ITEM IMAGE */
+.item-image {
+  height: 300px;             /* reduced from 180px */
+  background-color: #ddd;
+  border-radius: 8px;        /* reduced from 10px */
+  margin-bottom: 8px;        /* reduced from 15px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #708A70;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+/* EXCHANGE BUTTON */
+.exchange-btn {
+  margin-top: 8px;           /* reduced from 10px */
+  padding: 6px 14px;         /* reduced from 8px 16px */
+  border: none;
+  background-color: #769376;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;           /* smaller text */
+  transition: 0.3s;
+  width: 100%;               /* full width looks cleaner */
+}
+
+.exchange-btn:hover {
+  background-color: #4A7C59;
+}
+
+/* RESPONSIVE — 2 columns on smaller screens */
+@media (max-width: 768px) {
+  .items-container {
+    padding: 20px;
+  }
+
+  .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* RESPONSIVE — 1 column on mobile */
+@media (max-width: 480px) {
+  .items-grid {
+    grid-template-columns: 1fr;
+  }
+}

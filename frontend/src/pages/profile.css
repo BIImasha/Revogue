@@ -1,0 +1,331 @@
+/* Page Background */
+.profile-container {
+  background-color: #f4f4f4;
+  padding: 40px 10%;
+  min-height: 80vh;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #212B36;
+}
+
+.wardrobe-title {
+  margin-top: 60px;
+}
+
+/* Profile Card */
+.profile-card {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+}
+
+/* Avatar */
+.profile-avatar {
+  width: 120px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.profile-avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #769376;
+}
+
+/* Default Avatar */
+.avatar-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #dcdcdc;
+}
+
+/* Upload input */
+.profile-avatar input {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+/* Edit Profile Button */
+.edit-profile-btn {
+  background-color: #769376;
+  color: #fff;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.edit-profile-btn:hover {
+  background-color: #708A70;
+}
+
+/* Save Button */
+.save-btn {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background: #769376;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #708A70;
+}
+
+/* Profile Inputs */
+.profile-input {
+  width: 250px;
+  padding: 10px;
+  margin: 6px auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  display: block;
+}
+
+/* Wardrobe Grid */
+.wardrobe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+/* Wardrobe Card */
+.wardrobe-card {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.wardrobe-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Wardrobe Image */
+.wardrobe-image {
+  width: 100%;
+  height: 150px;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* Item Text */
+.item-name {
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.item-code {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Buttons */
+.wardrobe-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.black-btn {
+  background-color: #769376;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.black-btn:hover {
+  background-color: #708A70;
+}
+
+/* --- Feedback Section Container --- */
+.feedback-section {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* Form on left, List on right */
+  gap: 40px;
+  max-width: 1100px;
+  margin: 20px auto 60px;
+  align-items: start;
+}
+
+/* --- Feedback Form Card --- */
+.feedback-form-card {
+  position: relative;
+  right: -40%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+}
+
+.feedback-form-card textarea {
+  width: 500px;
+  min-height: 120px;
+  padding: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  resize: none;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+  background-color: #fcfcfc;
+}
+
+.feedback-form-card textarea:focus {
+  outline: none;
+  border-color: #769376;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(118, 147, 118, 0.1);
+}
+
+/* --- Custom Rating Dropdown --- */
+.rating-select {
+  margin-bottom: 10px;
+  padding: 7px 7px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffb400;
+  font-weight: 500;
+  color: #444;
+  cursor: pointer;
+}
+
+/* --- Feedback List Items --- */
+.feedback-item {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border-left: 4px solid #769376; /* Accent brand color */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  transition: transform 0.2s ease;
+}
+
+.feedback-item:hover {
+  transform: translateX(5px);
+}
+
+.stars {
+  color: #ffb400; /* Gold for stars */
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.feedback-text {
+  color: #4a5568;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+/* --- Action Buttons (Edit/Delete) --- */
+.feedback-actions {
+  display: flex;
+  gap: 15px;
+  border-top: 1px solid #f7f7f7;
+  padding-top: 10px;
+}
+
+.edit-btn, .delete-btn {
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.edit-btn { color: #769376; }
+.edit-btn:hover { color: #4a634a; text-decoration: underline; }
+
+.delete-btn { color: #e53e3e; }
+.delete-btn:hover { color: #c53030; text-decoration: underline; }
+
+/* Container for edit mode */
+.edit-mode-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+/* Textarea */
+.edit-textarea {
+  width: 385px;
+  min-height: 80px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edit-textarea:focus {
+  outline: none;
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+}
+
+/* Row (dropdown + button) */
+.edit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Dropdown */
+
+/* Save button */
+.submit-btn {
+  padding: 7px 7px;
+  font-size: 13px;
+  background-color: #769376;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #333;
+}
+
+/* Responsive check */
+@media (max-width: 850px) {
+  .feedback-section {
+    grid-template-columns: 1fr;
+  }
+}

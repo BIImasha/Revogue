@@ -1,0 +1,112 @@
+.login-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F4F4F4;
+  padding: 40px;
+}
+
+/* Card */
+.login-card {
+  background: white;
+  padding: 50px;
+  width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* Title */
+.login-card h2 {
+  color: #212B36;
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.login-subtitle {
+  color: #708A70;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Inputs */
+.login-form input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  border-color: #769376;
+  box-shadow: 0 0 0 2px rgba(118, 147, 118, 0.2);
+}
+
+/* Forgot Password */
+.forgot-password {
+  text-align: right;
+  margin: -10px 0 10px;
+}
+
+.forgot-password a {
+  font-size: 13px;
+  color: #708A70;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+
+.login-bt {
+  padding: 10px;
+  background: #335826;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Hover */
+.login-bt:hover {
+  background: linear-gradient(135deg, #333333, #555555);
+  transform: translateY(-2px);
+}
+
+/* Click */
+.login-bt:active {
+  transform: scale(0.97);
+}
+
+/* Footer text */
+.login-footer-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-footer-text a {
+  color: #769376;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-footer-text a:hover {
+  text-decoration: underline;
+}
