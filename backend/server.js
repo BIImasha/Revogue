@@ -34,6 +34,7 @@ const feedbackRoutes     = require("./routes/feedbackRoutes");
 const messageRoutes      = require("./routes/messageRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const adminRoutes        = require("./routes/adminRoutes");
+const chatRoutes         = require("./routes/chatRoutes");
 
 app.use("/api/users",         userRoutes);
 app.use("/api/items",         itemRoutes);
@@ -42,6 +43,7 @@ app.use("/api/feedback",      feedbackRoutes);
 app.use("/api/messages",      messageRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/admin",         adminRoutes);
+app.use("/api/chat",          chatRoutes);
 
 // ─── TEST ROUTE ───────────────────────────────────────────
 // Visit http://localhost:5000/api/test to check if server works

@@ -13,10 +13,12 @@ import ForgotPassword from "./pages/forgot_password";
 // Our security guard component
 import ProtectedRoute from "./components/ProtectedRoute";
 import Admin          from "./pages/admin";
+import Chatbot        from "./components/Chatbot";
 
 function App() {
   return (
-    <Routes>
+    <>
+      <Routes>
 
       {/* ── PUBLIC ROUTES ──────────────────────────────── */}
       <Route path="/"                element={<Homepage />} />
@@ -65,6 +67,8 @@ function App() {
       />
 
     </Routes>
+    <Chatbot />
+    </>
   );
 }
 
