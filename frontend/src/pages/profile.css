@@ -7,10 +7,18 @@
 
 /* Section Titles */
 .section-title {
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 600;
-  margin-bottom: 20px;
-  color: #212B36;
+  color: #4A7C59;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.section-subtitle {
+  font-family: Sans-Serif;
+  font-size: 16px;
+  color: #2c2b2b;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 .wardrobe-title {
@@ -238,6 +246,7 @@
 }
 
 .feedback-text {
+  font-family: Sans-Serif;
   color: #4a5568;
   line-height: 1.5;
   font-size: 0.95rem;

@@ -9,6 +9,7 @@ import Upload from "./pages/upload";
 import Requests from "./pages/requests";
 import Profile from "./pages/profile";
 import ForgotPassword from "./pages/forgot_password";
+import Sustainability from "./pages/sustainability";
 
 // Our security guard component
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -20,54 +21,52 @@ function App() {
     <>
       <Routes>
 
-      {/* ── PUBLIC ROUTES ──────────────────────────────── */}
-      <Route path="/"                element={<Homepage />} />
-      <Route path="/login"           element={<Login />} />
-      <Route path="/signup"          element={<Signup />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
+        {/* ── PUBLIC ROUTES ──────────────────────────────── */}
+        <Route path="/"                element={<Homepage />} />
+        <Route path="/login"           element={<Login />} />
+        <Route path="/signup"          element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/sustainability"  element={<Sustainability />} /> {/* ✅ Public */}
 
-      {/* ── SEMI PUBLIC (items visible but request needs login) ── */}
-      <Route path="/items"           element={<Items />} />
+        {/* ── SEMI PUBLIC (items visible but request needs login) ── */}
+        <Route path="/items"           element={<Items />} />
 
-      {/* ── PROTECTED ROUTES ───────────────────────────── */}
-      <Route
-        path="/upload"
-        element={
-          <ProtectedRoute>
-            <Upload />
-          </ProtectedRoute>
-        }
-      />
+        {/* ── PROTECTED ROUTES ───────────────────────────── */}
+        <Route
+          path="/upload"
+          element={
+            <ProtectedRoute>
+              <Upload />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/requests"
+          element={
+            <ProtectedRoute>
+              <Requests />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
 
-      <Route
-        path="/requests"
-        element={
-          <ProtectedRoute>
-            <Requests />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/admin"
-        element={
-          <ProtectedRoute>
-            <Admin />
-          </ProtectedRoute>
-        }
-      />
-
-    </Routes>
-    <Chatbot />
+      </Routes>
+      <Chatbot />
     </>
   );
 }

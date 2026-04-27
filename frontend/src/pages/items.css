@@ -12,7 +12,8 @@
 }
 
 .items-subtitle {
-  font-size: 18px;
+  font-family: Sans-Serif;
+  font-size: 16px;
   color: #2c2b2b;
   margin-bottom: 30px;     /* reduced from 40px */
 }
@@ -70,6 +71,7 @@
 
 /* ITEM CARD TEXT */
 .item-card h3 {
+  font-family: Sans-Serif;
   font-size: 14px;           /* smaller title */
   margin: 8px 0 4px 0;
   color: #222;
@@ -80,7 +82,8 @@
 }
 
 .item-card p {
-  font-size: 12px;           /* smaller text */
+  font-family: Sans-Serif;
+  font-size: 8px;           /* smaller text */
   color: #666;
   margin: 2px 0;
 }

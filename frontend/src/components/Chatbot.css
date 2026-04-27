@@ -55,6 +55,7 @@
 }
 
 .chatbot-header-left {
+  font-family: sans-serif;
   display:     flex;
   align-items: center;
   gap:         10px;

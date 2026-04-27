@@ -24,12 +24,12 @@ function Items() {
   const [loading, setLoading]               = useState(true);
   const [error, setError]                   = useState("");
 
-  // 🔍 Search state
+    //  Search state
   const [searchTerm, setSearchTerm]         = useState("");
   const [searchInput, setSearchInput]       = useState("");
 
   // Popup state
-  const [showModal, setShowModal]           = useState(false);
+  const [showModal, setShowModal]           = useState(false);  
   const [selectedItem, setSelectedItem]     = useState(null);
   const [successMsg, setSuccessMsg]         = useState("");
 
@@ -123,20 +123,6 @@ function Items() {
           }}
         >
           <div style={{ position: "relative", flex: 1 }}>
-            {/* Search Icon */}
-            <span
-              style={{
-                position:   "absolute",
-                left:       "14px",
-                top:        "50%",
-                transform:  "translateY(-50%)",
-                fontSize:   "16px",
-                color:      "#888",
-              }}
-            >
-              🔍
-            </span>
-
             {/* Search Input */}
             <input
               type="text"

@@ -23,7 +23,8 @@
 }
 
 .hero-left p {
-  font-size: 18px;
+  font-family: Sans-Serif;
+  font-size: 16px;
   margin-bottom: 25px;
   color: #2c2b2b;
   line-height: 1.6;
@@ -62,7 +63,8 @@
 }
 
 .why-sub {
-  font-size: 18px;
+  font-family: Sans-Serif;
+  font-size: 16px;
   color: #2c2b2b;
   margin-bottom: 50px;
 }
@@ -74,6 +76,8 @@
 }
 
 .why-card {
+  font-family: Sans-Serif;
+  font-size: 14px;
   background: white;
   padding: 25px;
   border-radius: 12px;
@@ -94,7 +98,8 @@
 }
 
 .rewear-section p {
-  font-size: 18px;
+  font-family: Sans-Serif;
+  font-size: 16px;
   color: #2c2b2b;
   max-width: 700px;
   margin: auto;
@@ -107,6 +112,8 @@
 }
 
 .category-grid {
+  font-family: Sans-Serif;
+  font-size: 14px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
@@ -145,7 +152,8 @@
 }
 
 .review-sub {
-  font-size: 18px;
+  font-family: Sans-Serif;
+  font-size: 16px;
   color: #2c2b2b;
   margin-bottom: 50px;
 }
@@ -157,6 +165,8 @@
 }
 
 .review-card {
+  font-family: Sans-Serif;
+  font-size: 14px;
   background: #F4F4F4;
   padding: 30px;
   border-radius: 12px;

@@ -175,6 +175,8 @@ const Profile = () => {
 
         {/* PROFILE */}
         <h2 className="section-title">My Profile</h2>
+        <p className="section-subtitle">Manage your personal information and preferences</p>
+
         <div className="profile-card">
           <div className="profile-avatar">
             {user.profilePic ? (

@@ -37,6 +37,8 @@ function Navbar() {
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/items">Items</Link></li>
+          {/* Sustainability visible to everyone */}
+          <li><Link to="/sustainability">Sustainability</Link></li>
 
           {/* Only show these links when logged in */}
           {currentUser && (
@@ -55,7 +57,7 @@ function Navbar() {
         {/* Login / User Section */}
         {currentUser ? 
           <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            {/* 🔔 Notification Bell */}
+            {/*  Notification Bell */}
             <NotificationBell />
 
             {/* Login / User Section */}

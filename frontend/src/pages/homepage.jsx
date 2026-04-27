@@ -166,7 +166,7 @@ function Homepage() {
       <section className="review-section">
         <h2>What Our Community Says</h2>
         <p className="review-sub">
-          Join thousands of satisfied members who are making a difference
+          Together, we grow Revogue.
         </p>
 
         {/* Loading state */}

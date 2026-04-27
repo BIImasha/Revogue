@@ -70,7 +70,10 @@ const Requests = () => {
 
       <div className="requests-container">
         <h2 className="requests-title">Swap Requests</h2>
-
+        <p className="requests-subtitle">
+          Browse and exchange pre-loved fashion items sustainably
+        </p>
+        
         {message && (
           <p style={{ textAlign: "center", color: "green", marginBottom: "15px" }}>
             {message}

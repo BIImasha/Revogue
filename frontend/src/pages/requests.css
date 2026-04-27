@@ -7,10 +7,20 @@
 
 /* Title */
 .requests-title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 600;
+  color: #4A7C59;
   margin-bottom: 30px;
-  color: #333;
+  text-align: center;
+}
+
+/* Subtitle */
+.requests-subtitle {
+  font-family: Sans-Serif;
+  font-size: 16px;
+  color: #2c2b2b;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 /* Card */
@@ -40,12 +50,14 @@
 }
 
 .request-middle h4 {
+  font-family: sans-serif;
   margin: 0;
   font-weight: 600;
   color: #444;
 }
 
 .request-middle p {
+  font-family: sans-serif;
   margin-top: 8px;
   color: #666;
   font-size: 14px;

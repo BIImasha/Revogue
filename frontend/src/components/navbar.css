@@ -9,7 +9,7 @@
   align-items: center;
   padding: 18px 80px;
 
-  background-color: rgba(244, 244, 244, 0.95);
+  background-color: rgba(242, 242, 242, 0.95);
   backdrop-filter: blur(6px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
@@ -23,7 +23,7 @@
   cursor: pointer;
 }
 .logo-img {
-  height: 120px;   /* adjust size */
+  height: 140px;   /* adjust size */
   width: auto;     /* maintain aspect ratio */
   object-fit: contain;
   cursor: pointer;
@@ -34,6 +34,7 @@
   display: flex;
   align-items: center;
   gap: 40px;
+  font-family: Sans-Serif;
 }
 
 /* Nav Links */
@@ -45,7 +46,8 @@
 
 /* Remove default link styles */
 .nav-links li a {
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
   color: #4A7C59; /* Darker Sage */
   text-decoration: none;   /* remove underline */
   cursor: pointer;
