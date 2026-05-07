@@ -1,107 +1,452 @@
-.upload-container {
-  min-height: 80vh;
-  background-color: #F4F4F4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
-}
-
-.upload-card {
+/* ── UPLOAD PAGE ───────────────────────────────── */
+.upload-page {
+  min-height: 100vh;
   background: white;
-  width: 700px;
-  padding: 40px;
+  font-family: 'Jost', sans-serif;
+}
+
+/* ── HEADER ────────────────────────────────────── */
+.upload-header {
+  padding: 3.5rem 6rem 2.8rem;
+  background: var(--moss);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image:
+    linear-gradient(to right, #C8A96E 2px, transparent 2px),
+    linear-gradient(to bottom, #C8A96E 2px, transparent 2px);
+  background-size: 48px 48px;
+}
+
+.upload-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, black, transparent);
+  opacity: 0.6;
+}
+
+.upload-section-label {
+  display: inline-block;
+  padding: 0.38rem 0.9rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(200,169,110,0.3);
+  background: rgba(200,169,110,0.15);
+  color: var(--gold-light);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.upload-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  color: black;
+  line-height: 1.05;
+  position: relative;
+  z-index: 1;
+}
+
+.upload-header h1 em {
+  color: #7AAB8A;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.upload-header-divider {
+  width: 36px;
+  height: 2px;
+  margin: 0.8rem auto 1rem;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+
+.upload-header-sub {
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: black;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── PAGE LAYOUT ───────────────────────────────── */
+.up-page {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2rem;
+  padding: 3rem 6rem 5rem;
+  align-items: start;
+}
+
+/* ── LEFT PANEL ────────────────────────────────── */
+.up-left {
+  background: #F5EDD8;
+  border: 3px solid #F5EDD8;
   border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  padding: 1.6rem;
+  position: sticky;
+  top: 120px;
 }
 
-.upload-card h2 {
-  font-size: 32px;
-  color: #4A7C59; /* Darker Sage */;
-  margin-bottom: 30px;
+.up-left-label {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: black;
 }
 
-.upload-form {
+.up-sub {
+  font-size: 0.74rem;
+  line-height: 1.8;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 1.4rem;
+}
+
+/* ── DROPZONE ──────────────────────────────────── */
+.up-dropzone {
+  border: 1.5px dashed rgba(0,0,0,0.15);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.5);
+  min-height: 340px;
+  overflow: hidden;
+  transition: border-color 0.22s, background 0.22s;
+}
+
+.up-dropzone:hover {
+  border-color: #C8A96E;
+  background: rgba(255,255,255,0.75);
+}
+
+.up-drop-label {
+  min-height: 340px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-/* INPUTS */
-.upload-form input,
-.upload-form textarea,
-.upload-form select {
-  padding: 12px 15px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  outline: none;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.upload-form textarea {
-  min-height: 100px;
-  resize: none;
-}
-
-.upload-form input:focus,
-.upload-form textarea:focus,
-.upload-form select:focus {
-  border-color: #769376;
-}
-
-/* ROW FOR CONDITION & SIZE */
-.row {
-  display: flex;
-  gap: 20px;
-}
-
-.row select {
-  flex: 1;
-}
-
-/* UPLOAD BOX */
-.upload-box {
-  position: relative;
-  border: 2px dashed #708A70;
-  background-color: #F4F4F4;
-  border-radius: 12px;
-  padding: 50px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   text-align: center;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
-.upload-box:hover {
-  background-color: #e9efe9;
+.up-drop-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--gold-dark);
+  background: white;
 }
 
-.upload-box p {
-  color: #708A70;
+.up-drop-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
 }
 
-.upload-box input {
-  position: absolute;
+.up-drop-hint {
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+/* ── PREVIEW ───────────────────────────────────── */
+.up-preview-wrap {
+  position: relative;
+}
+
+.up-preview-img {
   width: 100%;
-  height: 100%;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  cursor: pointer;
+  height: 340px;
+  object-fit: cover;
+  display: block;
 }
 
-/* SUBMIT BUTTON */
-.submit-btn {
-  padding: 12px;
-  background-color: #769376;
+.up-reselect {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.55rem 1rem;
+  background: rgba(0,0,0,0.8);
   color: white;
-  border: none;
-  border-radius: 25px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 15px;
-  transition: 0.3s;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.22s;
 }
 
-.submit-btn:hover {
-  background-color: #708A70;
+.up-reselect:hover {
+  background: #C8A96E;
+}
+
+/* ── EXTRA PHOTOS ──────────────────────────────── */
+.up-extra-photos {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+
+/* ── BANNERS ───────────────────────────────────── */
+.up-banner {
+  margin-top: 1.2rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.up-banner.analyzing {
+  background: rgba(200,169,110,0.12);
+  color: var(--gold-dark);
+}
+
+.up-banner.done {
+  background: var(--sage-pale);
+  color: var(--forest);
+}
+
+.up-spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.12);
+  border-top-color: var(--gold-dark);
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── RIGHT PANEL ───────────────────────────────── */
+.up-right {
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+/* ── FORM ──────────────────────────────────────── */
+.up-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.up-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.up-field label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.up-field input,
+.up-field textarea,
+.up-field select {
+  width: 100%;
+  background: var(--warm-white);
+  border: 1.5px solid black;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.22s, background 0.22s;
+}
+
+.up-field textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.up-field input:focus,
+.up-field textarea:focus,
+.up-field select:focus {
+  border-color: #C8A96E;
+}
+
+.up-field input::placeholder,
+.up-field textarea::placeholder {
+  color: var(--muted-light);
+}
+
+/* ── AI FILLED ─────────────────────────────────── */
+.ai-filled {
+  background: rgba(200,169,110,0.08) !important;
+  border-color: #C8A96E !important;
+}
+
+.ai-pill {
+  padding: 0.18rem 0.42rem;
+  border-radius: 999px;
+  background: rgba(200,169,110,0.16);
+  color: var(--gold-dark);
+  font-size: 0.48rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+/* ── ROWS ──────────────────────────────────────── */
+.up-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ── ALERTS ────────────────────────────────────── */
+.up-msg {
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.up-msg.error {
+  background: rgba(180, 70, 70, 0.08);
+  color: var(--declined);
+  border-left: 3px solid var(--declined);
+}
+
+.up-msg.success {
+  background: var(--sage-pale);
+  color: var(--forest);
+  border-left: 3px solid var(--sage);
+}
+
+/* ── SUBMIT BUTTON ─────────────────────────────── */
+.up-submit {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.9rem 0;
+  background: black;
+  border: 1.5px solid black;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background 0.22s, border-color 0.22s;
+}
+
+.up-submit:hover:not(:disabled) {
+  background: #C8A96E;
+  border-color: #C8A96E;
+}
+
+.up-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ── RESPONSIVE ────────────────────────────────── */
+@media (max-width: 1100px) {
+
+  .upload-header,
+  .up-page {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .up-page {
+    grid-template-columns: 1fr;
+  }
+
+  .up-left {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .upload-header,
+  .up-page {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .up-row {
+    grid-template-columns: 1fr;
+  }
+
+  .up-right {
+    padding: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .upload-header {
+    padding-top: 2.8rem;
+    padding-bottom: 2.2rem;
+  }
+
+  .up-left,
+  .up-right {
+    padding: 1.1rem;
+  }
+
+  .up-dropzone,
+  .up-drop-label,
+  .up-preview-img {
+    min-height: 260px;
+    height: 260px;
+  }
 }

@@ -3,10 +3,10 @@ const Item = require("../models/Item");
 // ─── UPLOAD ITEM ──────────────────────────────────────────
 // POST /api/items
 const uploadItem = async (req, res) => {
-  const { title, description, category, condition, size } = req.body;
+  // Now also accepts material, color, style from the form
+  const { title, description, category, condition, size, material, color, style } = req.body;
 
   try {
-    // Get uploaded image paths
     const images = req.files
       ? req.files.map((file) => `/uploads/${file.filename}`)
       : [];
@@ -18,6 +18,9 @@ const uploadItem = async (req, res) => {
       category,
       condition,
       size,
+      material: material || "",
+      color:    color    || "",
+      style:    style    || "",
       images
     });
 
@@ -34,19 +37,9 @@ const getAllItems = async (req, res) => {
   try {
     const { category, search } = req.query;
 
-    // Build filter
     const filter = { status: "available" };
-
-    // Filter by category if provided
     if (category) filter.category = category;
-
-    // Search by title if provided
-    // $regex allows partial matching
-    // $options: "i" means case-insensitive
-    // So "jacket" matches "Jacket", "JACKET", "Blue Jacket" etc.
-    if (search) {
-      filter.title = { $regex: search, $options: "i" };
-    }
+    if (search)   filter.title    = { $regex: search, $options: "i" };
 
     const items = await Item.find(filter)
       .populate("owner", "name profilePic")
@@ -83,7 +76,6 @@ const deleteItem = async (req, res) => {
       return res.status(404).json({ message: "Item not found" });
     }
 
-    // Only the owner can delete their item
     if (item.owner.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: "Not allowed" });
     }
@@ -110,13 +102,16 @@ const updateItem = async (req, res) => {
       return res.status(403).json({ message: "Not allowed" });
     }
 
-    const { title, description, category, condition, size } = req.body;
+    const { title, description, category, condition, size, material, color, style } = req.body;
 
     item.title       = title       || item.title;
     item.description = description || item.description;
     item.category    = category    || item.category;
     item.condition   = condition   || item.condition;
     item.size        = size        || item.size;
+    item.material    = material    !== undefined ? material : item.material;
+    item.color       = color       !== undefined ? color    : item.color;
+    item.style       = style       !== undefined ? style    : item.style;
 
     const updated = await item.save();
     res.json(updated);

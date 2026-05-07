@@ -5,17 +5,19 @@ import logo from "../assets/logo.png";
 import NotificationBell from "./NotificationBell";
 
 function Navbar() {
-  // Check if someone is logged in
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Read user info from localStorage
-    const user = JSON.parse(localStorage.getItem("revogueUser"));
-    setCurrentUser(user);
+    const syncUser = () => {
+      const user = JSON.parse(localStorage.getItem("revogueUser"));
+      setCurrentUser(user);
+    };
+    syncUser();
+    window.addEventListener("storage", syncUser);
+    return () => window.removeEventListener("storage", syncUser);
   }, []);
 
-  // ── LOGOUT ──────────────────────────────────────────────
   const handleLogout = () => {
     localStorage.removeItem("revogueUser");
     setCurrentUser(null);
@@ -25,28 +27,24 @@ function Navbar() {
   return (
     <nav className="navbar">
 
-      {/* Left Side - Logo */}
+      {/* ── LOGO ── */}
       <div className="logo">
         <Link to="/">
-          <img src={logo} alt="Revogue Logo" className="logo-img" />
+          <img src={logo} alt="Revogue" className="logo-img" />
         </Link>
       </div>
 
-      {/* Right Side - Navigation */}
+      {/* ── RIGHT: links + user ── */}
       <div className="nav-right">
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/items">Items</Link></li>
-          {/* Sustainability visible to everyone */}
-          <li><Link to="/sustainability">Sustainability</Link></li>
 
-          {/* Only show these links when logged in */}
           {currentUser && (
             <>
               <li><Link to="/upload">Upload</Link></li>
               <li><Link to="/requests">Requests</Link></li>
               <li><Link to="/profile">Profile</Link></li>
-              {/* Only show Admin link for admin users */}
               {currentUser.role === "admin" && (
                 <li><Link to="/admin">Admin</Link></li>
               )}
@@ -54,48 +52,24 @@ function Navbar() {
           )}
         </ul>
 
-        {/* Login / User Section */}
-        {currentUser ? 
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            {/*  Notification Bell */}
+        {/* ── USER / LOGIN ── */}
+        {currentUser ? (
+          <div className="nav-user">
             <NotificationBell />
-
-            {/* Login / User Section */}
-        
-          <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end"
-          }}>
-            <span style={{
-              fontSize: "18px",
-              fontWeight: "600",
-              color: "#222"
-            }}>
-               Hello, {currentUser.name}
+            <span className="nav-greeting">
+              Hello, <span>{currentUser.name}</span>
             </span>
-
-            <button
-              className="login-btn"
-              onClick={handleLogout}
-              style={{
-                marginTop: "15px",
-                padding: "8px 20px",
-                fontSize: "15px",
-                alignSelf: "center" //  centers button under text
-              }}
-            >
+            <button className="login-btn" onClick={handleLogout}>
               Logout
             </button>
           </div>
-          </div>
-          
-         : (
+        ) : (
           <Link to="/login">
             <button className="login-btn">Login</button>
           </Link>
         )}
       </div>
+
     </nav>
   );
 }

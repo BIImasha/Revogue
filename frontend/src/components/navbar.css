@@ -1,111 +1,179 @@
-/* Main Navbar Container */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap');
+
+:root {
+  --sage:        #7AAB8A;
+  --sage-light:  #A8C7B5;
+  --sage-dim:    #3D6B4F;
+  --ink:         #0D0C0A;
+  --ink-soft:    #111510;
+  --ink-mid:     #1E2A22;
+  --cream:       #F0EDE6;
+  --cream-dim:   #B8B4AC;
+  --gold:        #C8A96E;
+}
+
+/* ── NAVBAR ─────────────────────────────────────── */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 80px;
-
-  background-color: rgba(242, 242, 242, 0.95);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 0 4rem;
+  height: 200px;
+  background: linear-gradient(135deg, #F5EDD8 0%, #7AAB8A 100%);
+  border-bottom: 1px solid linear-gradient(135deg, #F5EDD8 0%, #7AAB8A 100%);
+  backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+  
 }
 
-/* Logo */
+/* thin sage accent line at very top */
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--sage), transparent);
+  opacity: 0.4;
+}
+
+/* ── LOGO ────────────────────────────────────────── */
 .logo {
-  font-size: 26px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: #769376; /* Sage Green */
-  cursor: pointer;
-}
-.logo-img {
-  height: 140px;   /* adjust size */
-  width: auto;     /* maintain aspect ratio */
-  object-fit: contain;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-/* Right Side Container */
+.logo-img {
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0.9) saturate(0.7);
+  transition: filter 0.25s;
+}
+
+.logo-img:hover {
+  filter: brightness(1) saturate(1);
+}
+
+/* ── RIGHT SIDE ──────────────────────────────────── */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 40px;
-  font-family: Sans-Serif;
+  gap: 2.5rem;
+  font-family: 'Jost', sans-serif;
 }
 
-/* Nav Links */
+/* ── NAV LINKS ───────────────────────────────────── */
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 30px;
+  gap: 0;
+  align-items: center;
 }
 
-/* Remove default link styles */
-.nav-links li a {
-  font-size: 22px;
-  font-weight: 600;
-  color: #4A7C59; /* Darker Sage */
-  text-decoration: none;   /* remove underline */
-  cursor: pointer;
-  transition: 0.3s ease;
+.nav-links li {
   position: relative;
 }
 
-/* Remove purple visited color */
+.nav-links li a {
+  display: block;
+  padding: 0 1rem;
+  font-size: 20px;
+  font-weight:semi-bold;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.22s;
+  line-height: 64px; /* vertically centres in navbar height */
+}
+
 .nav-links li a:visited {
-  color: #4A7C59; /* Darker Sage */
+  color: black;
 }
 
-/* Hover effect */
 .nav-links li a:hover {
-  color: #4A7C59; /* Darker Sage */
+  color: white;
 }
 
-/* Hover Effect */
-.nav-links li:hover {
-  color: #4A7C59; /* Darker Sage */
+/* active underline indicator */
+.nav-links li a.active,
+.nav-links li a[aria-current="page"] {
+  color: white;
 }
 
-/* Optional Underline Hover Animation */
-.nav-links li::after {
-  content: "";
+.nav-links li a::after {
+  content: '';
   position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0%;
-  height: 2px;
-  background-color: #4A7C59; /* Darker Sage */
-  transition: 0.3s ease;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 1px;
+  background: white;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
 }
 
-.nav-links li:hover::after {
-  width: 100%;
+.nav-links li a:hover::after {
+  transform: scaleX(1);
 }
 
-/* Login Button */
-/* Login Button - Updated with Specificity */
-button.login-btn, 
+/* ── USER SECTION ────────────────────────────────── */
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.nav-greeting {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: black;
+}
+
+.nav-greeting span {
+  color: black;
+  font-weight: 400;
+}
+
+/* ── LOGIN / LOGOUT BUTTON ───────────────────────── */
+button.login-btn,
 .login-btn {
   display: inline-block;
-  padding: 8px 22px;
-  background-color:#2D5016 !important; /* Forest Green forced */
-  color: #ffffff !important;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  font-family: 'Times New Roman', Times, serif;
+  padding: 0.42rem 1.2rem;
+  background: #F5EDD8 !important;
+  border: 1px solid #F5EDD8 !important;
+  color: black !important;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px !important;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background 0.22s, color 0.22s !important;
+  border-radius: 0 !important;
   outline: none;
 }
 
-/* Button Hover State */
 button.login-btn:hover,
 .login-btn:hover {
-  background-color:#769376 !important; /* Sage Green forced */
+  background: var(--gold) !important;
+  color: var(--ink) !important;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .navbar { padding: 0 1.5rem; }
+  .nav-links li a { padding: 0 0.6rem; letter-spacing: 0.12em; }
+  .nav-right { gap: 1rem; }
+}
+
+@media (max-width: 680px) {
+  .nav-links { display: none; }
 }

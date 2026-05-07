@@ -117,7 +117,7 @@ function SwapRequestModal({ selectedItem, onClose, onSuccess }) {
         </button>
 
         {/* ── TITLE ── */}
-        <h2 style={{ marginBottom: "8px", fontSize: "20px" }}>
+        <h2 style={{ marginBottom: "8px", fontSize: "20px" , color: "black"}}>
           Request Exchange
         </h2>
         <p style={{ color: "#666", marginBottom: "20px", fontSize: "14px" }}>
@@ -134,6 +134,7 @@ function SwapRequestModal({ selectedItem, onClose, onSuccess }) {
             background:   "#f9f9f9",
             borderRadius: "8px",
             marginBottom: "20px",
+            color:        "black",
           }}
         >
           {/* Item image */}
@@ -173,8 +174,21 @@ function SwapRequestModal({ selectedItem, onClose, onSuccess }) {
             <p style={{ color: "#888", fontSize: "13px", margin: 0 }}>
               Condition: {selectedItem.condition} · Size: {selectedItem.size}
             </p>
-            <p style={{ color: "#888", fontSize: "13px", margin: 0 }}>
-              Owner: {selectedItem.owner?.name}
+
+              {/* Material, Colour, Style — only show if they exist */}
+              {(selectedItem.material || selectedItem.color || selectedItem.style) && (
+            <p style={{ color: "#888", fontSize: "13px", margin: "3px 0 0 0" }}>
+            {[
+              selectedItem.material && `Material: ${selectedItem.material}`,
+              selectedItem.color    && `Colour: ${selectedItem.color}`,
+              selectedItem.style    && `Style: ${selectedItem.style}`,
+             ]
+               .filter(Boolean)
+               .join(" · ")}
+            </p>
+              )}
+            <p style={{ color: "#888", fontSize: "13px", margin: "3px 0 0 0" }}>
+             Owner: {selectedItem.owner?.name}
             </p>  
           </div>
         </div>
@@ -223,8 +237,9 @@ function SwapRequestModal({ selectedItem, onClose, onSuccess }) {
             style={{
               display:      "block",
               marginBottom: "8px",
-              fontWeight:   "500",
+              fontWeight:   "300",
               fontSize:     "14px",
+              color:        "black",
             }}
           >
             Select your item to offer in return:
@@ -278,8 +293,9 @@ function SwapRequestModal({ selectedItem, onClose, onSuccess }) {
             style={{
               display:      "block",
               marginBottom: "8px",
-              fontWeight:   "500",
+              fontWeight:   "300",
               fontSize:     "14px",
+              color:        "black",
             }}
           >
             Add a message (optional):

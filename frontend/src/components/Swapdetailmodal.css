@@ -1,0 +1,320 @@
+/* ── OVERLAY ──────────────────────────────────────────────── */
+.sdm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(2px);
+}
+
+/* ── MODAL BOX ────────────────────────────────────────────── */
+.sdm-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: #ffffff;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 820px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  padding: 32px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* ── HEADER ───────────────────────────────────────────────── */
+.sdm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.sdm-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px 0;
+}
+
+.sdm-subtitle {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.sdm-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sdm-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* ── STATUS BADGE ─────────────────────────────────────────── */
+.sdm-status-row {
+  margin-bottom: 20px;
+}
+
+.sdm-status {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+.sdm-status-pending  { background: #fff8e1; color: #f57f17; }
+.sdm-status-accepted { background: #e8f5e9; color: #2e7d32; }
+.sdm-status-declined { background: #fce4ec; color: #c62828; }
+
+/* ── CARDS ROW ────────────────────────────────────────────── */
+.sdm-cards-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+/* Swap arrow */
+.sdm-arrow {
+  font-size: 28px;
+  color: #4a7c59;
+  padding-top: 100px;
+  flex-shrink: 0;
+  font-weight: 300;
+}
+
+/* ── ITEM CARD ────────────────────────────────────────────── */
+.sdm-item-card {
+  flex: 1;
+  background: #f8faf8;
+  border: 1px solid #e4ede4;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sdm-item-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4a7c59;
+  background: #e8f0e8;
+  padding: 7px 14px;
+}
+
+/* Image */
+.sdm-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.sdm-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.sdm-img:hover {
+  transform: scale(1.04);
+}
+
+.sdm-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 13px;
+  min-height: 180px;
+}
+
+/* Item details */
+.sdm-item-details {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sdm-item-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* Tags */
+.sdm-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sdm-tag {
+  font-size: 11px;
+  font-weight: 600;
+  background: #e8f0e8;
+  color: #4a7c59;
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+
+/* Description */
+.sdm-description {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Extra fields (material, colour, style) */
+.sdm-extra-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid #e4ede4;
+  padding-top: 8px;
+}
+
+.sdm-extra-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.sdm-extra-key {
+  color: #888;
+  font-weight: 600;
+}
+
+.sdm-extra-val {
+  color: #333;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* Owner */
+.sdm-owner {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+  border-top: 1px solid #e4ede4;
+  padding-top: 8px;
+}
+
+/* ── MESSAGE BOX ──────────────────────────────────────────── */
+.sdm-message-box {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.sdm-message-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.sdm-message-text {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── ACTION BUTTONS ───────────────────────────────────────── */
+.sdm-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sdm-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 9px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  min-width: 120px;
+}
+
+.sdm-btn:hover {
+  transform: translateY(-1px);
+}
+
+.sdm-btn-accept {
+  background: #2d4a35;
+  color: #fff;
+}
+
+.sdm-btn-accept:hover { background: #3a6145; }
+
+.sdm-btn-decline {
+  background: #fce4ec;
+  color: #c62828;
+}
+
+.sdm-btn-decline:hover { background: #f8bbd0; }
+
+.sdm-btn-cancel {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.sdm-btn-cancel:hover { background: #e0e0e0; }
+
+.sdm-btn-ghost {
+  background: #f5f5f5;
+  color: #666;
+  flex: 0;
+  padding: 12px 24px;
+}
+
+.sdm-btn-ghost:hover { background: #ebebeb; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .sdm-modal {
+    padding: 20px 16px;
+  }
+
+  .sdm-cards-row {
+    flex-direction: column;
+  }
+
+  .sdm-arrow {
+    padding-top: 0;
+    text-align: center;
+    font-size: 22px;
+    transform: rotate(90deg);
+  }
+}

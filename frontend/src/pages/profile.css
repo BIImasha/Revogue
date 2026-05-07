@@ -1,340 +1,528 @@
-/* Page Background */
+/* ── PROFILE PAGE ─────────────────────────────── */
+.profile-page {
+  min-height: 100vh;
+  background: white;
+  font-family: 'Jost', sans-serif;
+}
+
+/* ── HEADER ───────────────────────────────────── */
+.profile-header {
+  padding: 3.5rem 6rem 2.8rem;
+  background: var(--moss);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image:
+    linear-gradient(to right, #C8A96E 2px, transparent 2px),
+    linear-gradient(to bottom, #C8A96E 2px, transparent 2px);
+  background-size: 48px 48px;
+}
+
+.profile-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, black, transparent);
+  opacity: 0.6;
+}
+
+.profile-section-label {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.38rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(200,169,110,0.3);
+  background: rgba(200,169,110,0.15);
+  color: var(--gold-light);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  color: black;
+  line-height: 1.05;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-header h1 em {
+  color: #7AAB8A;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.profile-header-divider {
+  width: 36px;
+  height: 2px;
+  margin: 0.8rem auto 1rem;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-header-sub {
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: black;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── CONTAINER ────────────────────────────────── */
 .profile-container {
-  background-color: #f4f4f4;
-  padding: 40px 10%;
-  min-height: 80vh;
+  padding: 3rem 6rem 5rem;
 }
 
-/* Section Titles */
+/* ── MESSAGE ──────────────────────────────────── */
+.profile-message {
+  margin-bottom: 1.5rem;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--sage);
+  border-radius: 8px;
+  background: var(--sage-pale);
+  color: var(--forest);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+/* ── SECTION TITLES ───────────────────────────── */
 .section-title {
-  font-size: 32px;
-  font-weight: 600;
-  color: #4A7C59;
-  margin-bottom: 30px;
-  text-align: center;
-}
-.section-subtitle {
-  font-family: Sans-Serif;
-  font-size: 16px;
-  color: #2c2b2b;
-  margin-bottom: 40px;
-  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
 }
 
-.wardrobe-title {
-  margin-top: 60px;
+.section-title em {
+  color: #7AAB8A;
+  font-style: italic;
 }
 
-/* Profile Card */
+.section-divider {
+  width: 46px;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  border-radius: 2px;
+  margin-bottom: 1.8rem;
+}
+
+/* ── PROFILE CARD ─────────────────────────────── */
 .profile-card {
-  background-color: #ffffff;
-  padding: 40px;
-  border-radius: 12px;
-  text-align: center;
-  margin-bottom: 30px;
-  box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+  background: #F5EDD8;
+  border: 3px solid #F5EDD8;
+  border-radius: 18px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
 }
 
-/* Avatar */
+/* ── AVATAR ───────────────────────────────────── */
 .profile-avatar {
-  width: 120px;
-  margin: auto;
-  margin-bottom: 20px;
+  width: 160px;
+  flex-shrink: 0;
+  text-align: center;
 }
 
-.profile-avatar img {
-  width: 120px;
-  height: 120px;
+.profile-avatar img,
+.avatar-placeholder {
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #769376;
+  background: white;
+  border: 4px solid white;
 }
 
-/* Default Avatar */
 .avatar-placeholder {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: #dcdcdc;
+  background:
+    linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02));
 }
 
-/* Upload input */
-.profile-avatar input {
-  margin-top: 10px;
-  font-size: 12px;
-}
-
-/* Edit Profile Button */
-.edit-profile-btn {
-  background-color: #769376;
-  color: #fff;
-  padding: 8px 20px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: 0.3s;
-}
-
-.edit-profile-btn:hover {
-  background-color: #708A70;
-}
-
-/* Save Button */
-.save-btn {
-  margin-top: 10px;
-  padding: 8px 20px;
-  background: #769376;
+.avatar-upload-label {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.58rem 1rem;
+  background: black;
+  border: 1.5px solid black;
+  border-radius: 6px;
   color: white;
-  border: none;
-  border-radius: 20px;
   cursor: pointer;
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 0.22s, border-color 0.22s;
 }
 
-.save-btn:hover {
-  background: #708A70;
+.avatar-upload-label:hover {
+  background: #C8A96E;
+  border-color: #C8A96E;
 }
 
-/* Profile Inputs */
+/* ── PROFILE INFO ─────────────────────────────── */
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+}
+
+.profile-info p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+/* ── INPUTS ───────────────────────────────────── */
 .profile-input {
-  width: 250px;
-  padding: 10px;
-  margin: 6px auto;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.9rem 1rem;
+  background: white;
+  border: 1.5px solid black;
   border-radius: 8px;
-  border: 1px solid #ddd;
-  display: block;
+  outline: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--ink);
+  transition: border-color 0.22s;
 }
 
-/* Wardrobe Grid */
+.profile-input:focus {
+  border-color: #C8A96E;
+}
+
+/* ── ACTIONS ──────────────────────────────────── */
+.profile-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.save-btn,
+.edit-profile-btn,
+.black-btn,
+.feedback-submit-btn,
+.submit-btn,
+.edit-btn,
+.delete-btn {
+  padding: 0.68rem 1.1rem;
+  border-radius: 6px;
+  border: 1.5px solid black;
+  background: black;
+  color: white;
+  cursor: pointer;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 0.22s, border-color 0.22s;
+}
+
+.save-btn:hover,
+.edit-profile-btn:hover,
+.black-btn:hover,
+.feedback-submit-btn:hover,
+.submit-btn:hover,
+.edit-btn:hover {
+  background: #C8A96E;
+  border-color: #C8A96E;
+}
+
+.delete-btn:hover {
+  background: var(--declined);
+  border-color: var(--declined);
+}
+
+/* ── WARDROBE ─────────────────────────────────── */
+.wardrobe-section {
+  margin-bottom: 4rem;
+}
+
+.wardrobe-empty {
+  padding: 3rem 0;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--muted);
+}
+
 .wardrobe-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
 
-/* Wardrobe Card */
 .wardrobe-card {
-  background-color: #ffffff;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
-  transition: 0.3s;
+  background: #F5EDD8;
+  border: 3px solid #F5EDD8;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.22s, box-shadow 0.25s;
 }
 
 .wardrobe-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(30,61,42,0.12);
 }
 
-/* Wardrobe Image */
 .wardrobe-image {
-  width: 100%;
-  height: 150px;
-  background-color: #e0e0e0;
-  border-radius: 6px;
-  margin-bottom: 10px;
+  height: 240px;
+  overflow: hidden;
+  background: var(--sand);
 }
 
-/* Item Text */
+.wardrobe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wardrobe-card-body {
+  padding: 1.1rem 1.2rem;
+}
+
 .item-name {
-  font-weight: 600;
-  margin: 5px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
 }
 
 .item-code {
-  font-size: 14px;
-  color: #666;
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 1rem;
 }
 
-/* Buttons */
 .wardrobe-buttons {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 0.6rem;
 }
 
-.black-btn {
-  background-color: #769376;
-  color: #fff;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 13px;
-  transition: 0.3s;
-}
-
-.black-btn:hover {
-  background-color: #708A70;
-}
-
-/* --- Feedback Section Container --- */
-.feedback-section {
+/* ── FEEDBACK ─────────────────────────────────── */
+.feedback-layout {
   display: grid;
-  grid-template-columns: 1.2fr 1fr; /* Form on left, List on right */
-  gap: 40px;
-  max-width: 1100px;
-  margin: 20px auto 60px;
+  grid-template-columns: 360px 1fr;
+  gap: 2rem;
   align-items: start;
 }
 
-/* --- Feedback Form Card --- */
 .feedback-form-card {
-  position: relative;
-  right: -40%;
-  transform: translateX(-50%);
-  background: #ffffff;
-  padding: 25px;
+  background: #F5EDD8;
+  border: 3px solid #F5EDD8;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  border: 1px solid #f0f0f0;
+  padding: 1.5rem;
+  position: sticky;
+  top: 120px;
 }
 
-.feedback-form-card textarea {
-  width: 500px;
-  min-height: 120px;
-  padding: 15px;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  resize: none;
-  transition: all 0.3s ease;
-  margin-bottom: 15px;
-  background-color: #fcfcfc;
-}
-
-.feedback-form-card textarea:focus {
-  outline: none;
-  border-color: #769376;
-  background-color: #fff;
-  box-shadow: 0 0 0 3px rgba(118, 147, 118, 0.1);
-}
-
-/* --- Custom Rating Dropdown --- */
-.rating-select {
-  margin-bottom: 10px;
-  padding: 7px 7px;
-  border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  background-color: #ffb400;
+.feedback-form-label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 0.58rem;
   font-weight: 500;
-  color: #444;
-  cursor: pointer;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: black;
 }
 
-/* --- Feedback List Items --- */
-.feedback-item {
+.feedback-form-card textarea,
+.rating-select,
+.edit-textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.9rem 1rem;
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  border-left: 4px solid #769376; /* Accent brand color */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-  transition: transform 0.2s ease;
+  border: 1.5px solid black;
+  border-radius: 8px;
+  outline: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--ink);
+  transition: border-color 0.22s;
+}
+
+.feedback-form-card textarea,
+.edit-textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.feedback-form-card textarea:focus,
+.rating-select:focus,
+.edit-textarea:focus {
+  border-color: #C8A96E;
+}
+
+/* ── FEEDBACK LIST ────────────────────────────── */
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feedback-empty {
+  padding: 3rem 0;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.feedback-item {
+  background: #F5EDD8;
+  border: 3px solid #F5EDD8;
+  border-radius: 14px;
+  padding: 1.3rem;
+  transition: transform 0.22s, box-shadow 0.25s;
 }
 
 .feedback-item:hover {
-  transform: translateX(5px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(30,61,42,0.12);
 }
 
 .stars {
-  color: #ffb400; /* Gold for stars */
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+  color: #C8A96E;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
 }
 
 .feedback-text {
-  font-family: Sans-Serif;
-  color: #4a5568;
-  line-height: 1.5;
-  font-size: 0.95rem;
-  margin-bottom: 12px;
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 1rem;
 }
 
-/* --- Action Buttons (Edit/Delete) --- */
-.feedback-actions {
-  display: flex;
-  gap: 15px;
-  border-top: 1px solid #f7f7f7;
-  padding-top: 10px;
-}
-
-.edit-btn, .delete-btn {
-  background: none;
-  border: none;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0;
-  transition: color 0.2s;
-}
-
-.edit-btn { color: #769376; }
-.edit-btn:hover { color: #4a634a; text-decoration: underline; }
-
-.delete-btn { color: #e53e3e; }
-.delete-btn:hover { color: #c53030; text-decoration: underline; }
-
-/* Container for edit mode */
-.edit-mode-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 12px;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  background-color: #fafafa;
-}
-
-/* Textarea */
-.edit-textarea {
-  width: 385px;
-  min-height: 80px;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  resize: vertical;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.edit-textarea:focus {
-  outline: none;
-  border-color: #111;
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
-}
-
-/* Row (dropdown + button) */
+.feedback-actions,
 .edit-row {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+  gap: 0.7rem;
+  flex-wrap: wrap;
 }
 
-/* Dropdown */
-
-/* Save button */
-.submit-btn {
-  padding: 7px 7px;
-  font-size: 13px;
-  background-color: #769376;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s ease;
+/* ── LOADING ──────────────────────────────────── */
+.profile-loading {
+  padding: 6rem 2rem;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--muted);
 }
 
-.submit-btn:hover {
-  background-color: #333;
-}
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 1100px) {
 
-/* Responsive check */
-@media (max-width: 850px) {
-  .feedback-section {
+  .profile-header,
+  .profile-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .wardrobe-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .feedback-layout {
     grid-template-columns: 1fr;
+  }
+
+  .feedback-form-card {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .profile-header,
+  .profile-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-actions {
+    justify-content: center;
+  }
+
+  .wardrobe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+
+  .profile-header {
+    padding-top: 2.8rem;
+    padding-bottom: 2.2rem;
+  }
+
+  .wardrobe-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card,
+  .feedback-form-card,
+  .feedback-item {
+    padding: 1rem;
+  }
+
+  .profile-avatar img,
+  .avatar-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-info h3 {
+    font-size: 1.6rem;
   }
 }

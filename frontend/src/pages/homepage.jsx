@@ -8,7 +8,6 @@ function Homepage() {
   const [feedbacks, setFeedbacks] = useState([]);
   const [loadingFeedbacks, setLoadingFeedbacks] = useState(true);
 
-  // Load feedbacks when homepage opens
   useEffect(() => {
     fetchFeedbacks();
   }, []);
@@ -16,7 +15,6 @@ function Homepage() {
   const fetchFeedbacks = async () => {
     try {
       const res = await axiosInstance.get("/feedback");
-      // Only show latest 3 feedbacks on homepage
       setFeedbacks(res.data.slice(0, 3));
     } catch (err) {
       console.error("Failed to load feedbacks");
@@ -24,175 +22,148 @@ function Homepage() {
     setLoadingFeedbacks(false);
   };
 
-  // Helper to render stars
-  const renderStars = (rating) => {
-    return "★".repeat(rating) + "☆".repeat(5 - rating);
-  };
+  const renderStars = (rating) =>
+    "★".repeat(rating) + "☆".repeat(5 - rating);
 
   return (
     <>
       <Navbar />
 
-      {/* Hero section */}
+      {/* ── HERO ── */}
       <section className="hero">
         <div className="hero-left">
-          <h1>Welcome to REVOGUE</h1>
+          <h1>
+            Welcome to<br /><em>REVOGUE</em>
+          </h1>
           <h2>Style Meets Sustainability</h2>
           <p>
-            At Revogue, elegance finds purpose in unity.
-            We bring together a community of conscious fashion lovers who swap,
-            share, and celebrate style — where every exchange nurtures the
-            planet and every choice reflects mindful living.
+            At Revogue, elegance finds purpose in unity. We bring together a
+            community of conscious fashion lovers who swap, share, and celebrate
+            style — where every exchange nurtures the planet and every choice
+            reflects mindful living.
           </p>
-          <button
-            className="hero-btn"
-            onClick={() => (window.location.href = "/items")}
-          >
-            Explore Now
-          </button>
+          <div className="hero-btns">
+            <button
+              className="explore-btn"
+              onClick={() => (window.location.href = "/items")}
+            >
+              Explore Now
+            </button>
+            <button
+              className="impact-btn"
+              onClick={() => (window.location.href = "/sustainability")}
+            >
+              View Impact
+            </button>
+          </div>
         </div>
 
         <div className="hero-right">
           <div className="hero-image">
-            <img src="/src/assets/homepg1.jpg" alt="Hero" />
+            <img src="/src/assets/homepg1.jpg" alt="Sustainable fashion" />
           </div>
         </div>
       </section>
 
-      {/* WHY CHOOSE REVOGUE */}
+      {/* ── WHY CHOOSE REVOGUE ── */}
       <section className="why-section">
-        <h2>Why Choose Revogue?</h2>
+        <h2>Why Choose <em>Revogue?</em></h2>
         <p className="why-sub">
-          Join a movement that combines style with sustainability
+          A movement that combines style with sustainability
         </p>
-
         <div className="why-grid">
-          <div className="why-card">
-            <h3>Eco-Friendly</h3>
-            <p>
-              Reduce fashion waste and contribute to a more sustainable planet
-              with every swap.
-            </p>
-          </div>
-
-          <div className="why-card">
-            <h3>Community Driven</h3>
-            <p>
-              Connect with like-minded fashion enthusiasts who share your
-              values and style.
-            </p>
-          </div>
-
-          <div className="why-card">
-            <h3>Endless Variety</h3>
-            <p>
-              Refresh your wardrobe constantly without the environmental cost
-              of new purchases.
-            </p>
-          </div>
-
-          <div className="why-card">
-            <h3>Quality First</h3>
-            <p>
-              Every item is pre-loved and carefully curated to ensure quality
-              and style.
-            </p>
-          </div>
+          {[
+            {
+              num: "01",
+              title: "Eco-Friendly",
+              text: "Reduce fashion waste and contribute to a more sustainable planet with every swap.",
+            },
+            {
+              num: "02",
+              title: "Community Driven",
+              text: "Connect with like-minded fashion enthusiasts who share your values and style.",
+            },
+            {
+              num: "03",
+              title: "Endless Variety",
+              text: "Refresh your wardrobe constantly without the environmental cost of new purchases.",
+            },
+            {
+              num: "04",
+              title: "Quality First",
+              text: "Every item is pre-loved and carefully curated to ensure quality and style.",
+            },
+          ].map((card) => (
+            <div className="why-card" key={card.num}>
+              <div className="why-card-num">{card.num}</div>
+              <div className="why-card-line" />
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* REWEAR RACK */}
-      <section className="rewear-section">
-        <h2>Rewear Rack</h2>
+      {/* ── REWEAR RACK ── */}
+      <section className="category-section">
+        <div className="category-section-header">
+          <h2><em>Rewear</em> Rack</h2>
         <p>
           Where pre-loved fashion finds new life. Discover timeless pieces that
           blend style, sustainability, and second chances — because great style
           deserves to be worn again.
         </p>
-      </section>
+          
+        </div>
 
-      {/* CATEGORY GRID */}
-      <section className="category-section">
         <div className="category-grid">
-          <div className="category-card">
-            <img src="/src/assets/women_clothing.jpg" alt="Women's Clothing" />
-            <p>Women's Clothing</p>
-          </div>
-
-          <div className="category-card">
-            <img src="/src/assets/men_clothing.jpg" alt="Men's Clothing" />
-            <p>Men's Clothing</p>
-          </div>
-
-          <div className="category-card">
-            <img src="/src/assets/kids_clothing.png" alt="Kids' Clothing" />
-            <p>Kids' Clothing</p>
-          </div>
-
-          <div className="category-card">
-            <img src="/src/assets/footwear.jpg" alt="Footwear" />
-            <p>Footwear</p>
-          </div>
-
-          <div className="category-card">
-            <img src="/src/assets/accessories.png" alt="Accessories" />
-            <p>Accessories</p>
-          </div>
-
-          <div className="category-card">
-            <img src="/src/assets/jewelry.jpg" alt="Jewelry" />
-            <p>Jewelry</p>
-          </div>
-
-          <div className="category-card">
-            <img
-              src="/src/assets/outwear&seasonalwear.png"
-              alt="Outerwear & Seasonal Wear"
-            />
-            <p>Outerwear & Seasonal Wear</p>
-          </div>
-
-          <div className="category-card">
-            <img
-              src="/src/assets/bags&carryitems.png"
-              alt="Bags & Carry Items"
-            />
-            <p>Bags & Carry Items</p>
-          </div>
+          {[
+            { src: "/src/assets/women_clothing.jpg",        label: "Women's Clothing" },
+            { src: "/src/assets/men_clothing.jpg",          label: "Men's Clothing" },
+            { src: "/src/assets/kids_clothing.png",         label: "Kids' Clothing" },
+            { src: "/src/assets/footwear.jpg",              label: "Footwear" },
+            { src: "/src/assets/accessories.png",           label: "Accessories" },
+            { src: "/src/assets/jewelry.jpg",               label: "Jewelry" },
+            { src: "/src/assets/outwear&seasonalwear.png",  label: "Outerwear & Seasonal" },
+            { src: "/src/assets/bags&carryitems.png",       label: "Bags & Carry Items" },
+          ].map((cat) => (
+            <div
+              className="category-card"
+              key={cat.label}
+              onClick={() => (window.location.href = "/items")}
+            >
+              <div className="category-card-img">
+                <img src={cat.src} alt={cat.label} />
+              </div>
+              <div className="category-card-label">{cat.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* COMMUNITY REVIEWS — Now shows REAL data! */}
+      {/* ── COMMUNITY REVIEWS ── */}
       <section className="review-section">
-        <h2>What Our Community Says</h2>
-        <p className="review-sub">
-          Together, we grow Revogue.
-        </p>
+        <h2>What Our <em>Community</em> Says</h2>
+        <p className="review-sub">Together, we grow Revogue.</p>
+      
 
-        {/* Loading state */}
         {loadingFeedbacks && (
-          <p style={{ textAlign: "center", color: "#888" }}>
-            Loading reviews...
-          </p>
+          <p className="review-empty">Loading reviews...</p>
         )}
 
-        {/* No feedbacks yet */}
         {!loadingFeedbacks && feedbacks.length === 0 && (
-          <p style={{ textAlign: "center", color: "#888" }}>
+          <p className="review-empty">
             No reviews yet. Be the first to share your experience!
           </p>
         )}
 
-        {/* Real feedbacks from database */}
         <div className="review-grid">
           {feedbacks.map((fb) => (
             <div className="review-card" key={fb._id}>
-              <p>"{fb.text}"</p>
+              <p>{fb.text}</p>
               <div className="stars">{renderStars(fb.rating)}</div>
-              <h4>- {fb.user?.name}</h4>
-              <small style={{ color: "#aaa", fontSize: "12px" }}>
-                {new Date(fb.createdAt).toLocaleDateString()}
-              </small>
+              <h4>— {fb.user?.name}</h4>
+              <small>{new Date(fb.createdAt).toLocaleDateString()}</small>
             </div>
           ))}
         </div>

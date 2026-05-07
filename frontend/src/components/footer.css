@@ -1,5 +1,6 @@
 .footer {
-  background-color: #769376;  /* Sage Green */
+  background: linear-gradient(135deg, #7AAB8A 0%, #F5EDD8 100%);
+  border-bottom: 1px solid linear-gradient(135deg, #F5EDD8 0%, #7AAB8A 100%);
   color: white;
   padding: 60px 80px 20px 80px;
 }
@@ -24,6 +25,7 @@
 }
 
 .footer-left p {
+  font-family: 'Jost', sans-serif;
   color: #F4F4F4;
   line-height: 1.6;
   max-width: 350px;
@@ -35,22 +37,28 @@
 }
 
 .footer-middle h3 {
-  color:#F4F4F4 ; 
+  color: #F4F4F4;
   margin-bottom: 15px;
 }
 
 .footer-middle ul {
+  font-family: 'Jost', sans-serif;
   list-style: none;
   padding: 0;
 }
 
 .footer-middle li {
   margin-bottom: 10px;
-  cursor: pointer;
+}
+
+/* Apply hover ONLY on link */
+.footer-middle a {
+  text-decoration: none;
+  color: inherit;
   transition: 0.3s;
 }
 
-.footer-middle li:hover {
+.footer-middle a:hover {
   color: #769376;
 }
 
@@ -62,6 +70,7 @@
 .footer-right h3 {
   color: #F4F4F4;
   margin-bottom: 15px;
+  font-family: 'Jost', sans-serif;
 }
 
 .social-icons {
@@ -87,5 +96,5 @@
   border-top: 1px solid #444;
   padding-top: 15px;
   font-size: 14px;
-  color: #ccc;
+  color: black;
 }

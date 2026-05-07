@@ -20,383 +20,235 @@ function Items() {
   ];
 
   const [activeCategory, setActiveCategory] = useState("All");
-  const [items, setItems]                   = useState([]);
-  const [loading, setLoading]               = useState(true);
-  const [error, setError]                   = useState("");
-
-    //  Search state
-  const [searchTerm, setSearchTerm]         = useState("");
-  const [searchInput, setSearchInput]       = useState("");
-
-  // Popup state
-  const [showModal, setShowModal]           = useState(false);  
-  const [selectedItem, setSelectedItem]     = useState(null);
-  const [successMsg, setSuccessMsg]         = useState("");
+  const [items,          setItems]          = useState([]);
+  const [loading,        setLoading]        = useState(true);
+  const [error,          setError]          = useState("");
+  const [searchTerm,     setSearchTerm]     = useState("");
+  const [searchInput,    setSearchInput]    = useState("");
+  const [showModal,      setShowModal]      = useState(false);
+  const [selectedItem,   setSelectedItem]   = useState(null);
+  const [successMsg,     setSuccessMsg]     = useState("");
 
   const navigate    = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem("revogueUser"));
 
-  // Fetch items when category OR search term changes
-  useEffect(() => {
-    fetchItems();
-  }, [activeCategory, searchTerm]);
+  useEffect(() => { fetchItems(); }, [activeCategory, searchTerm]);
 
   const fetchItems = async () => {
     setLoading(true);
     setError("");
-
     try {
-      // Build URL with category and search params
       let url = "/items?";
-
-      if (activeCategory !== "All") {
-        url += `category=${encodeURIComponent(activeCategory)}&`;
-      }
-
-      if (searchTerm) {
-        url += `search=${encodeURIComponent(searchTerm)}`;
-      }
-
+      if (activeCategory !== "All") url += `category=${encodeURIComponent(activeCategory)}&`;
+      if (searchTerm)               url += `search=${encodeURIComponent(searchTerm)}`;
       const response = await axiosInstance.get(url);
       setItems(response.data);
-
-    } catch (err) {
+    } catch {
       setError("Failed to load items. Please try again.");
     }
-
     setLoading(false);
   };
 
-  // ── SEARCH HANDLERS ───────────────────────────────────
-  // Handle search form submit
   const handleSearch = (e) => {
     e.preventDefault();
     setSearchTerm(searchInput);
   };
 
-  // Handle clearing search
   const handleClearSearch = () => {
     setSearchInput("");
     setSearchTerm("");
   };
 
-  // ── REQUEST EXCHANGE ──────────────────────────────────
   const handleRequestClick = (item) => {
-    if (!currentUser) {
-      navigate("/login");
-      return;
-    }
-
+    if (!currentUser) { navigate("/login"); return; }
     if (item.owner?._id === currentUser._id) {
       alert("This is your own item! You cannot request it.");
       return;
     }
-
     setSelectedItem(item);
     setShowModal(true);
   };
 
   const handleSuccess = () => {
-    setSuccessMsg("Swap request sent successfully! ✅ Check your Requests page.");
+    setSuccessMsg("Swap request sent successfully! Check your Requests page.");
     setTimeout(() => setSuccessMsg(""), 4000);
   };
 
   return (
-    <>
+    <div className="items-page">
       <Navbar />
 
-      <div className="items-container">
-        <h1>Exchange Items</h1>
-        <p className="items-subtitle">
+      {/* ── PAGE HEADER ── */}
+      <div className="items-header">
+        
+        <h1>Exchange <em>Items</em></h1>
+        <div className="items-header-divider" />
+        <p className="items-header-sub">
           Browse and exchange pre-loved fashion items sustainably
         </p>
+      </div>
 
-        {/* ── SEARCH BAR ── */}
+      {/* ── SUCCESS BANNER ── */}
+      {successMsg && (
+        <div className="success-banner">
+          <span>{successMsg}</span>
+          <button className="success-banner-link" onClick={() => navigate("/requests")}>
+            View Requests →
+          </button>
+        </div>
+      )}
+
+      {/* ── CONTROLS ── */}
+      <div className="items-controls">
+
+        {/* Search */}
         <form
           onSubmit={handleSearch}
-          style={{
-            display:       "flex",
-            gap:           "10px",
-            marginBottom:  "24px",
-            maxWidth:      "500px",
-            margin:        "0 auto 24px auto",
-          }}
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
-          <div style={{ position: "relative", flex: 1 }}>
-            {/* Search Input */}
+          <div className="search-row">
             <input
               type="text"
               placeholder="Search items by name..."
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              style={{
-                width:        "100%",
-                padding:      "12px 40px 12px 40px",
-                borderRadius: "25px",
-                border:       "2px solid #e0e0e0",
-                fontSize:     "14px",
-                outline:      "none",
-                boxSizing:    "border-box",
-                transition:   "border-color 0.2s",
-              }}
-              onFocus={(e) => (e.target.style.borderColor = "#000")}
-              onBlur={(e)  => (e.target.style.borderColor = "#e0e0e0")}
             />
-
-            {/* Clear button — shows when there is text */}
             {searchInput && (
-              <button
-                type="button"
-                onClick={handleClearSearch}
-                style={{
-                  position:   "absolute",
-                  right:      "14px",
-                  top:        "50%",
-                  transform:  "translateY(-50%)",
-                  background: "none",
-                  border:     "none",
-                  cursor:     "pointer",
-                  fontSize:   "16px",
-                  color:      "#888",
-                  padding:    "0",
-                }}
-              >
+              <button type="button" className="search-clear-btn" onClick={handleClearSearch}>
                 ✕
               </button>
             )}
+            <button type="submit" className="search-submit-btn">Search</button>
           </div>
-
-          {/* Search Button */}
-          <button
-            type="submit"
-            style={{
-              padding:      "12px 20px",
-              background:   "#000",
-              color:        "#fff",
-              border:       "none",
-              borderRadius: "25px",
-              cursor:       "pointer",
-              fontSize:     "14px",
-              fontWeight:   "500",
-              whiteSpace:   "nowrap",
-            }}
-          >
-            Search
-          </button>
         </form>
 
-        {/* ── ACTIVE SEARCH INDICATOR ── */}
+        {/* Active search indicator */}
         {searchTerm && (
-          <div
-            style={{
-              textAlign:    "center",
-              marginBottom: "16px",
-              fontSize:     "14px",
-              color:        "#555",
-            }}
-          >
-            Showing results for{" "}
-            <strong>"{searchTerm}"</strong>
-            {activeCategory !== "All" && (
-              <span> in <strong>{activeCategory}</strong></span>
-            )}
-            <button
-              onClick={handleClearSearch}
-              style={{
-                marginLeft:  "10px",
-                background:  "none",
-                border:      "none",
-                color:       "#e53935",
-                cursor:      "pointer",
-                fontSize:    "13px",
-                fontWeight:  "500",
-              }}
-            >
+          <div className="search-indicator">
+            Results for <strong>"{searchTerm}"</strong>
+            {activeCategory !== "All" && <> in <strong>{activeCategory}</strong></>}
+            <button className="search-indicator-clear" onClick={handleClearSearch}>
               ✕ Clear
             </button>
           </div>
         )}
 
-        {/* SUCCESS MESSAGE */}
-        {successMsg && (
-          <div
-            style={{
-              background:   "#d4edda",
-              color:        "#155724",
-              padding:      "12px 20px",
-              borderRadius: "8px",
-              marginBottom: "20px",
-              textAlign:    "center",
-              fontSize:     "14px",
-            }}
-          >
-            {successMsg}
-            <span
-              onClick={() => navigate("/requests")}
-              style={{
-                marginLeft:     "10px",
-                cursor:         "pointer",
-                fontWeight:     "600",
-                textDecoration: "underline",
-              }}
-            >
-              View Requests →
-            </span>
-          </div>
-        )}
-
-        {/* ── CATEGORY FILTER BUTTONS ── */}
+        {/* Category filters */}
         <div className="filter-container">
-          {categories.map((category, index) => (
+          {categories.map((cat) => (
             <button
-              key={index}
-              className={`filter-btn ${
-                activeCategory === category ? "active" : ""
-              }`}
-              onClick={() => setActiveCategory(category)}
+              key={cat}
+              className={`filter-btn ${activeCategory === cat ? "active" : ""}`}
+              onClick={() => setActiveCategory(cat)}
             >
-              {category}
+              {cat}
             </button>
           ))}
         </div>
 
-        {/* LOADING STATE */}
+      </div>
+
+      {/* ── BODY ── */}
+      <div className="items-body">
+
+        {/* Loading */}
         {loading && (
-          <p style={{ textAlign: "center", padding: "20px" }}>
-            Loading items...
-          </p>
+          <p className="state-msg">Loading items…</p>
         )}
 
-        {/* ERROR STATE */}
+        {/* Error */}
         {error && (
-          <p style={{ textAlign: "center", color: "red", padding: "20px" }}>
-            {error}
-          </p>
+          <p className="state-msg" style={{ color: "var(--declined)" }}>{error}</p>
         )}
 
-        {/* EMPTY STATE */}
+        {/* Empty */}
         {!loading && !error && items.length === 0 && (
-          <div style={{ textAlign: "center", padding: "40px" }}>
-            <p style={{ fontSize: "40px" }}>🔍</p>
-            <p style={{ fontSize: "16px", color: "#555" }}>
+          <div className="state-msg">
+            <span>
               {searchTerm
                 ? `No items found for "${searchTerm}"`
                 : "No items found in this category yet."}
-            </p>
+            </span>
             {searchTerm && (
-              <button
-                onClick={handleClearSearch}
-                style={{
-                  marginTop:    "12px",
-                  padding:      "10px 20px",
-                  background:   "#000",
-                  color:        "#fff",
-                  border:       "none",
-                  borderRadius: "20px",
-                  cursor:       "pointer",
-                  fontSize:     "14px",
-                }}
-              >
-                Clear Search
-              </button>
+              <div>
+                <button className="state-clear-btn" onClick={handleClearSearch}>
+                  Clear Search
+                </button>
+              </div>
             )}
           </div>
         )}
 
-        {/* ── ITEMS GRID ── */}
-        <div className="items-grid">
-          {items.map((item) => {
-            const isMyItem =
-              currentUser && item.owner?._id === currentUser._id;
+        {/* Items grid */}
+        {!loading && !error && items.length > 0 && (
+          <div className="items-grid">
+            {items.map((item) => {
+              const isMyItem = currentUser && item.owner?._id === currentUser._id;
 
-            return (
-              <div className="item-card" key={item._id}>
+              return (
+                <div className="item-card" key={item._id}>
 
-                {item.images && item.images.length > 0 ? (
-                  <img
-                    src={`http://localhost:5000${item.images[0]}`}
-                    alt={item.title}
-                    className="item-image"
-                    style={{
-                      width:     "100%",
-                      height:    "300px",   /* matches CSS */
-                      objectFit: "cover",
-                      borderRadius: "8px",
-                    }}
-                  />
-                ) : (
-                  <div className="item-image">No Image</div>
-                )}
+                  {/* Image */}
+                  <div className="item-image">
+                    {item.images && item.images.length > 0 ? (
+                      <img
+                        src={`http://localhost:5000${item.images[0]}`}
+                        alt={item.title}
+                      />
+                    ) : (
+                      <span className="item-image-empty">No Image</span>
+                    )}
+                  </div>
 
-                <h3>{item.title}</h3>
+                  {/* Body */}
+                  <div className="item-card-body">
+                    <h3>{item.title}</h3>
 
-                {/* Description — show max 2 lines */}
-                {item.description && (
-                  <p style={{
-                    fontSize:      "13px",
-                    color:         "#555",
-                    marginBottom:  "8px",
-                    lineHeight:    "1.4",
-                    // Show only 2 lines then cut off with "..."
-                    display:             "-webkit-box",
-                    WebkitLineClamp:     2,
-                    WebkitBoxOrient:     "vertical",
-                    overflow:            "hidden",
-                  }}>
-                    {item.description}
-                  </p>
-                )}
+                    {item.description && (
+                      <p className="item-desc">{item.description}</p>
+                    )}
 
-                <p style={{ fontSize: "12px", color: "black" }}>
-                  Condition: {item.condition}
-                </p>
-                <p style={{ fontSize: "12px", color: "black" }}>
-                  Size: {item.size}
-                </p>
-                <p style={{ fontSize: "12px", color: "#494949" }}>
-                  By: {item.owner?.name}
-                </p>
+                    <div className="item-meta">
+                      <div className="item-meta-row">
+                        <span className="item-meta-label">Condition:</span>
+                        <span className="item-meta-value">{item.condition}</span>
+                      </div>
+                      <div className="item-meta-row">
+                        <span className="item-meta-label">Size:</span>
+                        <span className="item-meta-value">{item.size}</span>
+                      </div>
+                    </div>
 
-                {isMyItem ? (
-                  <button
-                    className="exchange-btn"
-                    disabled
-                    style={{
-                      background: "#ccc",
-                      cursor:     "not-allowed",
-                    }}
-                  >
-                    Your Item
-                  </button>
-                ) : (
-                  <button
-                    className="exchange-btn"
-                    onClick={() => handleRequestClick(item)}
-                  >
-                    Request Exchange
-                  </button>
-                )}
+                    <p className="item-owner">By {item.owner?.name}</p>
 
-              </div>
-            );
-          })}
-        </div>
+                    <button
+                      className="exchange-btn"
+                      disabled={isMyItem}
+                      onClick={() => !isMyItem && handleRequestClick(item)}
+                    >
+                      {isMyItem ? "Your Item" : "Request Exchange"}
+                    </button>
+                  </div>
+
+                </div>
+              );
+            })}
+          </div>
+        )}
+
       </div>
 
-      {/* SWAP REQUEST POPUP */}
+      {/* Swap modal */}
       {showModal && selectedItem && (
         <SwapRequestModal
           selectedItem={selectedItem}
-          onClose={() => {
-            setShowModal(false);
-            setSelectedItem(null);
-          }}
+          onClose={() => { setShowModal(false); setSelectedItem(null); }}
           onSuccess={handleSuccess}
         />
       )}
 
       <Footer />
-    </>
+    </div>
   );
 }
 

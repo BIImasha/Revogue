@@ -1,280 +1,411 @@
-/* ── MAIN CONTAINER ── */
-.sustain-container {
-  padding:          40px 60px;
-  background-color: #f4f4f4;
-  min-height:       80vh;
+/* ── SUSTAINABILITY PAGE ───────────────────────────── */
+.sustain-page {
+  background: white;
+  min-height: 100vh;
+  font-family: 'Jost', sans-serif;
+}
+
+/* ── HEADER ────────────────────────────────────────── */
+.sustain-header {
+  padding: 3.5rem 6rem 2.8rem;
+  background: var(--moss);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sustain-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, #C8A96E 2px, transparent 2px),
+    linear-gradient(to bottom, #C8A96E 2px, transparent 2px);
+  background-size: 48px 48px;
+}
+
+.sustain-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, black, transparent);
+  opacity: 0.6;
+}
+
+.sustain-section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  position: relative;
+  z-index: 1;
 }
 
 .sustain-title {
-  font-size:     32px;
-  color:         #4A7C59;
-  margin-bottom: 8px;
-  text-align:    center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: black;
+  line-height: 1.05;
+  position: relative;
+  z-index: 1;
+}
+
+.sustain-title em {
+  color: #7AAB8A;
+  font-style: italic;
+}
+
+.sustain-header-divider {
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  margin: 0.8rem auto 1rem;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
 }
 
 .sustain-subtitle {
-  font-family: Sans-Serif;
-  text-align: center;
-  color: #2c2b2b;
   font-size: 16px;
-  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: black;
+  position: relative;
+  z-index: 1;
 }
 
-/* ── STATS GRID ── */
+/* ── CONTAINER ─────────────────────────────────────── */
+.sustain-container {
+  padding: 3rem 6rem 5rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* ── BLOCK SYSTEM (like item cards section grouping) ─ */
+.sustain-block {
+  background: #F5EDD8;
+  border: 3px solid #F5EDD8;
+  border-radius: 14px;
+  padding: 1.8rem;
+  transition: box-shadow 0.25s ease;
+}
+
+.sustain-block:hover {
+  box-shadow: 0 8px 32px rgba(30,61,42,0.10);
+}
+
+.sustain-block-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.sustain-block-divider {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  margin-bottom: 1.2rem;
+  opacity: 0.6;
+}
+
+/* ── FILTER STRIP ──────────────────────────────────── */
+.filter-strip {
+  margin-bottom: 1.5rem;
+}
+
+.filter-strip-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* category buttons */
+.filter-cat-btn {
+  padding: 0.35rem 0.9rem;
+  border: 1.5px solid black;
+  background: transparent;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.filter-cat-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* active ALL button */
+.all-btn.active {
+  background: var(--moss);
+  border-color: var(--moss);
+  color: #C8A96E;
+}
+
+/* ── STATS GRID ────────────────────────────────────── */
 .sustain-stats-grid {
-  font-family: sans-serif;
-  display:               grid;
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap:                   20px;
-  margin-bottom:         40px;
+  gap: 14px;
+  margin: 1.5rem 0;
 }
 
 .sustain-stat-card {
-  font-family: sans-serif;
-  background:    #fff;
-  border-radius: 16px;
-  padding:       24px 20px;
-  text-align:    center;
-  box-shadow:    0 4px 12px rgba(0,0,0,0.06);
-  transition:    transform 0.2s;
+  background: white;
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease;
 }
 
 .sustain-stat-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
-.sustain-stat-icon {
-  font-size:     36px;
-  margin-bottom: 10px;
+.sustain-stat-card.highlight {
+  border-color: var(--gold);
+  background: var(--gold-pale);
 }
 
 .sustain-stat-value {
-  font-size:   28px;
-  font-weight: 700;
-  color:       #4A7C59;
-  margin:      0 0 4px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .sustain-stat-label {
-  font-size: 13px;
-  color:     #888;
-  margin:    0 0 6px 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.3rem;
 }
 
-.sustain-stat-source {
-  font-size:  10px;
-  color:      #bbb;
+/* ── CHART PANEL ───────────────────────────────────── */
+.chart-panel {
+  margin-top: 1.5rem;
+  background: white;
+  border: 1.5px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.chart-panel-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.chart-panel-title em {
+  color: #7AAB8A;
   font-style: italic;
-  margin:     0;
 }
 
-/* ── SECTION TITLES ── */
-.sustain-section-title {
-  font-size:     20px;
-  font-weight:   600;
-  color:         #333;
-  margin-bottom: 16px;
-  padding-left:  4px;
+.chart-empty {
+  text-align: center;
+  font-style: italic;
+  color: var(--muted);
+  padding: 2rem;
 }
 
-/* ── PERSONAL STATS ── */
-.personal-stats-card {
-  background:    #fff;
-  border-radius: 16px;
-  padding:       24px;
-  margin-bottom: 30px;
-  box-shadow:    0 8px 12px rgba(0,0,0,0.06);
+/* ── TOOLTIP ───────────────────────────────────────── */
+.sustain-tooltip {
+  background: white;
+  border: 1px solid var(--border-light);
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 0.7rem;
 }
 
-.personal-stats-grid {
-  display:               grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap:                   16px;
-  margin-top:            16px;
+.sustain-tooltip-title {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
 }
 
-.personal-stat-item {
-  text-align:   center;
-  padding:      16px;
-  background:   #f0f7f2;
-  border-radius: 10px;
+.sustain-tooltip-row {
+  color: var(--muted);
+  margin-bottom: 0.2rem;
 }
 
-.personal-stat-value {
-  font-size:   30px;
-  font-weight: 700;
-  color:       #4A7C59;
-  margin:      0 0 4px 0;
-}
-
-.personal-stat-label {
-  font-size: 12px;
-  color:     #666;
-  margin:    0;
-}
-
-/* ── CATEGORY TABLE ── */
+/* ── TABLE ─────────────────────────────────────────── */
 .sustain-table-card {
-  background:    #fff;
-  border-radius: 16px;
-  padding:       24px;
-  margin-bottom: 30px;
-  box-shadow:    0 4px 12px rgba(0,0,0,0.06);
-  overflow-x:    auto;
+  background: white;
+  border: 1.5px solid var(--border-light);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .sustain-table {
-  width:           100%;
+  width: 100%;
   border-collapse: collapse;
-  font-size:       14px;
+  font-size: 0.75rem;
 }
 
 .sustain-table th {
-  background:    #4A7C59;
-  color:         #fff;
-  padding:       10px 14px;
-  text-align:    left;
-  font-weight:   600;
+  background: var(--moss);
+  color: #C8A96E;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.6rem;
+  padding: 0.8rem;
 }
 
 .sustain-table td {
-  padding:       10px 14px;
-  border-bottom: 1px solid #f0f0f0;
-  color:         #333;
+  padding: 0.8rem;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--ink);
 }
 
-.sustain-table tr:nth-child(even) td {
-  background: #f9fdf9;
+.total-row {
+  font-weight: 600;
+  background: var(--gold-pale);
 }
 
-.sustain-table tr:hover td {
-  background: #f0f7f2;
-}
-
-/* ── POWER BI SECTION ── */
-.powerbi-section {
-  background:    #fff;
-  border-radius: 16px;
-  padding:       24px;
-  margin-bottom: 30px;
-  box-shadow:    0 4px 12px rgba(0,0,0,0.06);
-}
-
-.powerbi-placeholder {
-  background:      #f0f7f2;
-  border:          2px dashed #4A7C59;
-  border-radius:   12px;
-  padding:         60px 20px;
-  text-align:      center;
-  color:           #4A7C59;
-}
-
-.powerbi-placeholder h3 {
-  font-size:     20px;
-  margin-bottom: 8px;
-}
-
-.powerbi-placeholder p {
-  color:     #666;
-  font-size: 14px;
-}
-
-/* ── SOURCES CARD ── */
-.sources-card {
-  background:    #fff;
-  border-radius: 16px;
-  padding:       24px;
-  box-shadow:    0 4px 12px rgba(0,0,0,0.06);
-}
-
-.sources-card h3 {
-  font-size:     16px;
-  margin-bottom: 12px;
-  color:         #333;
-}
-
-.sources-card ul {
-  list-style: none;
-  padding:    0;
-  margin:     0;
-}
-
-.sources-card ul li {
-  font-size:     13px;
-  color:         #666;
-  padding:       6px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.sources-card ul li:last-child {
-  border-bottom: none;
-}
-
-.sources-card ul li::before {
-  content:      "📚 ";
+.cat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
   margin-right: 6px;
 }
 
-/* ── LOADING ── */
+/* ── PERSONAL IMPACT ──────────────────────────────── */
+.personal-stats-card {
+  background: white;
+  border: 1.5px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.personal-stats-intro {
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+}
+
+.personal-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.personal-stat-item {
+  text-align: center;
+}
+
+.personal-stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.personal-stat-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+/* empty state */
+.personal-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── SOURCES ──────────────────────────────────────── */
+.sources-card {
+  background: white;
+  border: 1.5px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.sources-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  margin-bottom: 0.6rem;
+}
+
+.sources-card em {
+  color: #7AAB8A;
+}
+
+.sources-intro {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.sources-card ul {
+  padding-left: 1rem;
+  font-size: 0.75rem;
+  color: var(--ink);
+}
+
+.sources-card li {
+  margin-bottom: 0.4rem;
+}
+
+.sources-disclaimer {
+  margin-top: 1rem;
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+/* ── LOADING ──────────────────────────────────────── */
 .sustain-loading {
   text-align: center;
-  padding:    80px 20px;
-  color:      #4A7C59;
-  font-size:  16px;
+  padding: 5rem 0;
+  font-style: italic;
+  color: var(--muted);
 }
 
-/* ── EQUIVALENTS BAR ── */
-.equivalents-grid {
-  display:               grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:                   16px;
-  margin-bottom:         30px;
-}
-
-.equivalent-card {
-  background:    #fff;
-  border-radius: 12px;
-  padding:       20px;
-  text-align:    center;
-  box-shadow:    0 4px 12px rgba(0,0,0,0.06);
-  border-left:   4px solid #4A7C59;
-}
-
-.equivalent-icon {
-  font-size:     30px;
-  margin-bottom: 8px;
-}
-
-.equivalent-value {
-  font-size:   18px;
-  font-weight: 700;
-  color:       #4A7C59;
-  margin:      0 0 4px 0;
-}
-
-.equivalent-label {
-  font-size: 12px;
-  color:     #888;
-  margin:    0;
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
+/* ── RESPONSIVE ───────────────────────────────────── */
+@media (max-width: 1100px) {
+  .sustain-header,
   .sustain-container {
-    padding: 20px;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   .sustain-stats-grid,
-  .personal-stats-grid,
-  .equivalents-grid {
+  .personal-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .sustain-header,
+  .sustain-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .sustain-stats-grid,
-  .personal-stats-grid,
-  .equivalents-grid {
+  .personal-stats-grid {
     grid-template-columns: 1fr;
   }
 }

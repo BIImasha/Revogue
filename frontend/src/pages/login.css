@@ -1,112 +1,359 @@
-.login-container {
-  min-height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #F4F4F4;
-  padding: 40px;
-}
-
-/* Card */
-.login-card {
+/* ── LOGIN PAGE ───────────────────────────────── */
+.login-page {
+  min-height: 100vh;
   background: white;
-  padding: 50px;
-  width: 400px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  text-align: center;
+  font-family: 'Jost', sans-serif;
 }
 
-/* Title */
+/* ── MAIN CONTAINER ───────────────────────────── */
+.login-container {
+  min-height: calc(100vh - 140px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── LEFT PANEL ───────────────────────────────── */
+.login-panel-left {
+  background: var(--moss);
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.panel-grid-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, #C8A96E 2px, transparent 2px),
+    linear-gradient(to bottom, #C8A96E 2px, transparent 2px);
+  background-size: 48px 48px;
+}
+
+.login-panel-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 40%);
+  pointer-events: none;
+}
+
+.panel-monogram {
+  position: relative;
+  z-index: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  font-style: italic;
+  font-weight: 300;
+  color: #C8A96E;
+  letter-spacing: 0.04em;
+}
+
+/* ── QUOTE ────────────────────────────────────── */
+.panel-quote {
+  position: relative;
+  z-index: 1;
+  max-width: 440px;
+}
+
+.panel-quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.18;
+  font-weight: 300;
+  color:#C8A96E ;
+  margin-bottom: 1.2rem;
+}
+
+.panel-quote-attr {
+  display: inline-block;
+  color: #C8A96E;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ── RIGHT PANEL ──────────────────────────────── */
+.login-panel-right {
+  background: #F5EDD8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+/* ── LOGIN CARD ───────────────────────────────── */
+.login-card {
+  width: 100%;
+  max-width: 470px;
+  background: white;
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(30,61,42,0.08);
+}
+
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--gold), transparent);
+}
+
+/* ── HEADING ──────────────────────────────────── */
 .login-card h2 {
-  color: #212B36;
-  margin-bottom: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 0.6rem;
 }
 
-/* Subtitle */
+.login-card h2 span {
+  color: #7AAB8A;
+  font-style: italic;
+}
+
 .login-subtitle {
-  color: #708A70;
-  margin-bottom: 30px;
-  font-size: 14px;
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
-/* Form */
+.login-divider {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  border-radius: 2px;
+  margin: 1.4rem 0 2rem;
+}
+
+/* ── ERROR ────────────────────────────────────── */
+.login-error {
+  margin-bottom: 1.4rem;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--declined);
+  border-radius: 8px;
+  background: rgba(180,70,70,0.08);
+  color: var(--declined);
+  font-size: 0.74rem;
+  line-height: 1.6;
+}
+
+/* ── FORM ─────────────────────────────────────── */
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.3rem;
 }
 
-/* Inputs */
-.login-form input {
-  padding: 12px 15px;
-  border: 1px solid #ddd;
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-field label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: black;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background: var(--warm-white);
+  border: 1.5px solid black;
   border-radius: 8px;
   outline: none;
-  transition: all 0.3s ease;
-  font-size: 14px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--ink);
+  transition: border-color 0.22s, background 0.22s;
 }
 
-.login-form input:focus {
-  border-color: #769376;
-  box-shadow: 0 0 0 2px rgba(118, 147, 118, 0.2);
+.form-field input:focus {
+  border-color: #C8A96E;
+  background: white;
 }
 
-/* Forgot Password */
+.form-field input::placeholder {
+  color: var(--muted-light);
+}
+
+/* ── PASSWORD ─────────────────────────────────── */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 3rem;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.22s;
+}
+
+.password-toggle:hover {
+  color: #C8A96E;
+}
+
+/* ── FORGOT PASSWORD ──────────────────────────── */
 .forgot-password {
-  text-align: right;
-  margin: -10px 0 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -0.3rem;
 }
 
 .forgot-password a {
-  font-size: 13px;
-  color: #708A70;
+  font-size: 0.68rem;
+  color: black;
   text-decoration: none;
-  transition: 0.3s;
+  letter-spacing: 0.04em;
+  transition: opacity 0.22s;
 }
 
 .forgot-password a:hover {
-  text-decoration: underline;
-  color: #000;
+  opacity: 0.7;
 }
 
-
+/* ── BUTTON ───────────────────────────────────── */
 .login-bt {
-  padding: 10px;
-  background: #335826;
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.95rem 0;
+  background: black;
+  border: 1.5px solid black;
+  border-radius: 8px;
   color: white;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 15px;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.62rem;
   font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background 0.22s, border-color 0.22s;
 }
 
-/* Hover */
-.login-bt:hover {
-  background: linear-gradient(135deg, #333333, #555555);
-  transform: translateY(-2px);
+.login-bt:hover:not(:disabled) {
+  background: #C8A96E;
+  border-color: #C8A96E;
 }
 
-/* Click */
-.login-bt:active {
-  transform: scale(0.97);
+.login-bt:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-/* Footer text */
+/* ── FOOTER TEXT ──────────────────────────────── */
 .login-footer-text {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #555;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.74rem;
+  color: var(--muted);
+  font-weight: 300;
 }
 
 .login-footer-text a {
-  color: #769376;
-  font-weight: 600;
+  color: var(--gold-dark);
   text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.22s;
 }
 
 .login-footer-text a:hover {
-  text-decoration: underline;
+  opacity: 0.7;
+}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 1100px) {
+
+  .login-panel-left {
+    padding: 3rem;
+  }
+
+  .login-card {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .login-container {
+    grid-template-columns: 1fr;
+  }
+
+  .login-panel-left {
+    min-height: 320px;
+    padding: 2.5rem;
+  }
+
+  .panel-monogram {
+    font-size: 3rem;
+  }
+
+  .panel-quote-text {
+    font-size: 2rem;
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .login-panel-right {
+    padding: 1.5rem;
+  }
+
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .panel-quote-text {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .login-panel-left {
+    padding: 2rem 1.5rem;
+    min-height: 260px;
+  }
+
+  .panel-monogram {
+    font-size: 2.4rem;
+  }
+
+  .panel-quote-text {
+    font-size: 1.45rem;
+  }
+
+  .login-card h2 {
+    font-size: 2.2rem;
+  }
 }

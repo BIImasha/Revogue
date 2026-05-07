@@ -4,18 +4,17 @@ import "./login.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import axiosInstance from "../api/axiosInstance";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Login() {
-  const [email, setEmail]       = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading]   = useState(false);
-  const [error, setError]       = useState("");
+  const [email,        setEmail]        = useState("");
+  const [password,     setPassword]     = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading,      setLoading]      = useState(false);
+  const [error,        setError]        = useState("");
 
-  const navigate  = useNavigate();
-  const location  = useLocation();
-
-  // Where did they come from? If redirected, go back there after login
-  // If came directly, go to homepage
+  const navigate = useNavigate();
+  const location = useLocation();
   const redirectTo = location.state?.from?.pathname || "/";
 
   const handleSubmit = async (e) => {
@@ -23,79 +22,116 @@ function Login() {
     setError("");
     setLoading(true);
 
-  // Tell navbar to update immediately
-  window.dispatchEvent(new Event("storage"));
-
-  // Go back to where they were trying to go
-  // Or homepage if they came directly
-  navigate(redirectTo);
-
     try {
-      // Send email and password to backend
-      const response = await axiosInstance.post("/users/login", {
-        email,
-        password,
-      });
-
-      // Save user info (including token) to localStorage
+      const response = await axiosInstance.post("/users/login", { email, password });
       localStorage.setItem("revogueUser", JSON.stringify(response.data));
-
-
+      window.dispatchEvent(new Event("storage"));
+      navigate(redirectTo);
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed. Try again.");
+      setError(
+        err.response?.data?.message ||
+        "The email or password you entered is incorrect."
+      );
     }
 
     setLoading(false);
   };
 
   return (
-    <>
+    <div className="login-page">
       <Navbar />
 
       <div className="login-container">
-        <div className="login-card">
-          <h2>Welcome Back</h2>
-          <p className="login-subtitle">
-            Login to continue your sustainable fashion journey
-          </p>
 
-          {error && (
-            <p style={{ color: "red", marginBottom: "10px" }}>{error}</p>
-          )}
+        {/* ── LEFT DECORATIVE PANEL ── */}
+        <div className="login-panel-left">
+          <div className="panel-grid-lines" />
+          <span className="panel-monogram">Revogue</span>
 
-          <form className="login-form" onSubmit={handleSubmit}>
-            <input
-              type="email"
-              placeholder="Email Address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-
-            <div className="forgot-password">
-              <Link to="/forgot-password">Forgot Password?</Link>
-            </div>
-
-            <button type="submit" className="login-bt" disabled={loading}>
-              {loading ? "Logging in..." : "Login"}
-            </button>
-          </form>
-
-          <p className="login-footer-text">
-            Don't have an account? <Link to="/signup">Sign Up</Link>
-          </p>
+          <div className="panel-quote">
+           
+            <p className="panel-quote-text">
+              "Fashion is the armour to survive the reality of everyday life."
+            </p>
+            <span className="panel-quote-attr">— Bill Cunningham</span>
+          </div>
         </div>
+
+        {/* ── RIGHT FORM PANEL ── */}
+        <div className="login-panel-right">
+          <div className="login-card">
+
+            <h2>Welcome <span>Back</span></h2>
+            <p className="login-subtitle">
+              Continue your sustainable fashion journey
+            </p>
+            <div className="login-divider" />
+
+            {error && (
+              <div className="login-error">⚠ {error}</div>
+            )}
+
+            <form className="login-form" onSubmit={handleSubmit}>
+
+              {/* Email */}
+              <div className="form-field">
+                <label htmlFor="login-email">Email Address</label>
+                <input
+                  id="login-email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+
+              {/* Password */}
+              <div className="form-field">
+                <label htmlFor="login-password">Password</label>
+                <div className="password-wrapper">
+                  <input
+                    id="login-password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <span
+                    className="password-toggle"
+                    onClick={() => setShowPassword(!showPassword)}
+                    title={showPassword ? "Hide password" : "Show password"}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === "Enter" && setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
+              </div>
+
+              <div className="forgot-password">
+                <Link to="/forgot-password">Forgot password?</Link>
+              </div>
+
+              <button type="submit" className="login-bt" disabled={loading}>
+                {loading ? "Authenticating..." : "Sign In"}
+              </button>
+
+            </form>
+
+            <p className="login-footer-text">
+              New to Revogue?&nbsp;<Link to="/signup">Create an account</Link>
+            </p>
+
+          </div>
+        </div>
+
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

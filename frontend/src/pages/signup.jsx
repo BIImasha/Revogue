@@ -4,26 +4,24 @@ import "./signup.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import axiosInstance from "../api/axiosInstance";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Signup() {
-  // These store what the user types
-  const [name, setName]             = useState("");
-  const [email, setEmail]           = useState("");
-  const [password, setPassword]     = useState("");
-  const [confirm, setConfirm]       = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
 
-  // These handle loading and error messages
-  const [loading, setLoading]       = useState(false);
-  const [error, setError]           = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  // This is used to redirect after signup
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Stops page from refreshing
+    e.preventDefault();
     setError("");
 
-    // Check passwords match
     if (password !== confirm) {
       setError("Passwords do not match!");
       return;
@@ -32,21 +30,15 @@ function Signup() {
     setLoading(true);
 
     try {
-      // Send data to backend
       const response = await axiosInstance.post("/users/register", {
         name,
         email,
         password,
       });
 
-      // Save user info to localStorage (keeps user logged in)
       localStorage.setItem("revogueUser", JSON.stringify(response.data));
-
-      // Go to homepage after successful signup
       navigate("/");
-
     } catch (err) {
-      // Show error message if something went wrong
       setError(err.response?.data?.message || "Signup failed. Try again.");
     }
 
@@ -54,64 +46,110 @@ function Signup() {
   };
 
   return (
-    <>
+    <div className="signup-page">
       <Navbar />
 
       <div className="signup-container">
-        <div className="signup-card">
-          <h2>Create Account</h2>
-          <p className="signup-subtitle">
-            Join the Revogue sustainable fashion community
-          </p>
 
-          {/* Show error message if any */}
-          {error && (
-            <p style={{ color: "red", marginBottom: "10px" }}>{error}</p>
-          )}
+        {/* LEFT PANEL */}
+        <div className="signup-left">
+          <div className="signup-overlay" />
 
-          <form className="signup-form" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-            <input
-              type="email"
-              placeholder="Email Address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
-              required
-            />
+          <span className="signup-brand">Revogue</span>
 
-            <button type="submit" className="signup-btn" disabled={loading}>
-              {loading ? "Creating Account..." : "Sign Up"}
-            </button>
-          </form>
-
-          <p className="signup-footer-text">
-            Already have an account? <Link to="/login">Login</Link>
-          </p>
+          <div className="signup-quote">
+            <p>
+              "Sustainable fashion is not a trend, it's a responsibility."
+            </p>
+            <h6>— Revogue Community</h6>
+          </div>
         </div>
+
+        {/* RIGHT PANEL */}
+        <div className="signup-right">
+          <div className="signup-card">
+
+            <h2>Create <span>Account</span></h2>
+            <p className="signup-subtitle">
+              Join the sustainable fashion movement
+            </p>
+            <div className="signup-divider" />
+
+            {error && <div className="signup-error">⚠ {error}</div>}
+
+            <form onSubmit={handleSubmit} className="signup-form">
+
+              <div className="form-field">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  placeholder="John Doe"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-field">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-field">
+                <label>Password</label>
+                <div className="password-wrapper">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <span onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
+              </div>
+
+              <div className="form-field">
+                <label>Confirm Password</label>
+                <div className="password-wrapper">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    value={confirm}
+                    onChange={(e) => setConfirm(e.target.value)}
+                    required
+                  />
+                  <span onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
+              </div>
+
+              <button className="signup-btn" disabled={loading}>
+                {loading ? "Creating Account..." : "Sign Up"}
+              </button>
+
+            </form>
+
+            <p className="signup-footer">
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
+
+          </div>
+        </div>
+
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

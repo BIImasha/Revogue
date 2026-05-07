@@ -5,7 +5,7 @@ const itemSchema = new mongoose.Schema(
     // Who uploaded this item
     owner: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",       // Links to User model
+      ref: "User",
       required: true
     },
     title: {
@@ -20,7 +20,7 @@ const itemSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: [            // Only these categories allowed
+      enum: [
         "Women's Clothing",
         "Men's Clothing",
         "Kids' Clothing",
@@ -41,11 +41,26 @@ const itemSchema = new mongoose.Schema(
       enum: ["XS", "S", "M", "L", "XL", "One Size", "N/A"],
       default: "N/A"
     },
+
+    // ── NEW AI-DETECTED FIELDS ──────────────────────────
+    material: {
+      type: String,
+      default: ""   // e.g. "Cotton", "Leather", "Polyester"
+    },
+    color: {
+      type: String,
+      default: ""   // e.g. "Navy Blue", "Cream White"
+    },
+    style: {
+      type: String,
+      default: ""   // e.g. "Vintage", "Minimalist", "Streetwear"
+    },
+    // ────────────────────────────────────────────────────
+
     images: {
-      type: [String],    // Array of image file paths
+      type: [String],
       default: []
     },
-    // Is this item still available or already swapped?
     status: {
       type: String,
       enum: ["available", "pending", "swapped"],

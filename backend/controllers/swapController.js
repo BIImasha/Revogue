@@ -65,10 +65,19 @@ const getMySwaps = async (req, res) => {
         { receiver:  req.user._id }
       ]
     })
-      .populate("requester",     "name profilePic")
-      .populate("receiver",      "name profilePic")
-      .populate("requestedItem", "title images")
-      .populate("offeredItem",   "title images")
+      .populate("requester", "name profilePic")
+      .populate("receiver",  "name profilePic")
+      // ── FIX: populate all item fields + owner name ──
+      .populate({
+        path:   "requestedItem",
+        select: "title images description category condition size material color style owner",
+        populate: { path: "owner", select: "name" }
+      })
+      .populate({
+        path:   "offeredItem",
+        select: "title images description category condition size material color style owner",
+        populate: { path: "owner", select: "name" }
+      })
       .sort({ createdAt: -1 });
 
     res.json(swaps);

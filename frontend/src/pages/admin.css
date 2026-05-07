@@ -1,253 +1,345 @@
-/* ── ADMIN CONTAINER ── */
-.admin-container {
-  max-width:  1100px;
-  margin:     0 auto;
-  padding:    30px 20px;
+/* ─────────────────────────────────────────────
+   ADMIN PAGE (MATCHED TO ITEMS PAGE DESIGN)
+──────────────────────────────────────────── */
+
+.admin-page {
+  background: white;
+  min-height: 100vh;
+  font-family: 'Jost', sans-serif;
+}
+
+/* ── HEADER ───────────────────────────── */
+.admin-header {
+  padding: 3.5rem 6rem 2.8rem;
+  background: var(--moss);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image:
+    linear-gradient(to right, #C8A96E 2px, transparent 2px),
+    linear-gradient(to bottom, #C8A96E 2px, transparent 2px);
+  background-size: 48px 48px;
+}
+
+.admin-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, black, transparent);
+  opacity: 0.6;
 }
 
 .admin-title {
-  font-size:     28px;
-  font-weight:   700;
-  margin-bottom: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: black;
+  line-height: 1.05;
+  position: relative;
+  z-index: 1;
+}
+
+.admin-title em {
+  color: #7AAB8A;
+  font-style: italic;
+}
+
+.admin-header-divider {
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  border-radius: 2px;
+  margin: 0.8rem auto 1rem;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
 }
 
 .admin-subtitle {
-  color:         #888;
-  margin-bottom: 30px;
-  font-size:     15px;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: black;
+  position: relative;
+  z-index: 1;
 }
 
-/* ── TAB BUTTONS ── */
+/* ── CONTAINER ───────────────────────── */
+.admin-container {
+  padding: 3rem 6rem 5rem;
+}
+
+/* ── MESSAGE ─────────────────────────── */
+.admin-message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.admin-message.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.admin-message.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* ── TABS ───────────────────────────── */
 .admin-tabs {
-  display:       flex;
-  gap:           10px;
-  margin-bottom: 30px;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+  margin-bottom: 1.5rem;
 }
 
 .admin-tab-btn {
-  padding:       10px 24px;
-  border:        none;
-  background:    none;
-  cursor:        pointer;
-  font-size:     14px;
-  font-weight:   500;
-  color:         #888;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
-  transition:    all 0.2s;
+  padding: 0.38rem 1rem;
+  background: var(--warm-white);
+  border: 1.5px solid black;
+  color: var(--muted);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.22s ease;
 }
 
 .admin-tab-btn:hover {
-  color: #000;
+  border-color: #C8A96E;
+  color: #C8A96E;
+  background: var(--gold-pale);
 }
 
 .admin-tab-btn.active {
-  color:        #000;
-  border-bottom: 3px solid #000;
+  background: var(--moss);
+  border-color: var(--moss);
+  color: #C8A96E;
 }
 
-/* ── STATS GRID ── */
+/* ── SECTION TITLE ───────────────────── */
+.admin-section-title {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+
+/* ── LOADING ─────────────────────────── */
+.admin-loading {
+  text-align: center;
+  padding: 4rem 0;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ── STATS GRID (ITEMS STYLE) ───────── */
 .stats-grid {
-  display:               grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap:                   16px;
-  margin-bottom:         30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
 
 .stat-card {
-  background:    #fff;
-  border:        1px solid #f0f0f0;
+  background: #F5EDD8;
+  border: 3px solid #F5EDD8;
   border-radius: 12px;
-  padding:       20px;
-  text-align:    center;
-  box-shadow:    0 2px 8px rgba(0,0,0,0.05);
-  transition:    transform 0.2s;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  position: relative;
 }
 
 .stat-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(30,61,42,0.12);
 }
 
 .stat-icon {
-  font-size:     32px;
-  margin-bottom: 8px;
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
 }
 
 .stat-number {
-  font-size:   28px;
-  font-weight: 700;
-  color:       #000;
-  margin:      0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: black;
 }
 
 .stat-label {
-  font-size: 13px;
-  color:     #888;
-  margin:    4px 0 0 0;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-/* ── SECTION TITLE ── */
-.admin-section-title {
-  font-size:     18px;
-  font-weight:   600;
-  margin-bottom: 16px;
-  color:         #333;
-}
-
-/* ── TABLE ── */
+/* ── TABLE ───────────────────────────── */
 .admin-table-wrapper {
-  overflow-x:    auto;
-  border-radius: 12px;
-  border:        1px solid #f0f0f0;
-  box-shadow:    0 2px 8px rgba(0,0,0,0.05);
+  overflow-x: auto;
+  color: black;
 }
 
 .admin-table {
-  width:           100%;
+  width: 100%;
   border-collapse: collapse;
-  font-size:       14px;
+  font-size: 0.8rem;
+  border: black;
 }
 
-.admin-table th {
-  background:    #f9f9f9;
-  padding:       12px 16px;
-  text-align:    left;
-  font-weight:   600;
-  color:         #555;
-  border-bottom: 1px solid #f0f0f0;
-  white-space:   nowrap;
+.admin-table thead {
+  background: var(--moss);
+  color: black;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  
 }
 
+.admin-table th,
 .admin-table td {
-  padding:       12px 16px;
-  border-bottom: 1px solid #f9f9f9;
-  color:         #333;
+  padding: 12px 10px;
+  border-bottom: 1px solid black;
+  text-align: left;
   vertical-align: middle;
 }
 
-.admin-table tr:last-child td {
-  border-bottom: none;
+.admin-table tbody tr:hover {
+  background: var(--gold-pale);
 }
 
-.admin-table tr:hover td {
-  background: #fafafa;
-}
-
-/* ── ITEM IMAGE IN TABLE ── */
+/* ── IMAGE ───────────────────────────── */
 .admin-item-img {
-  width:         45px;
-  height:        45px;
-  object-fit:    cover;
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
   border-radius: 6px;
-  border:        1px solid #eee;
+  border: 1px solid var(--border-light);
 }
 
 .admin-no-img {
-  width:           45px;
-  height:          45px;
-  background:      #f0f0f0;
-  border-radius:   6px;
-  display:         flex;
-  align-items:     center;
-  justify-content: center;
-  font-size:       10px;
-  color:           #aaa;
+  font-size: 0.65rem;
+  color: var(--muted-light);
 }
 
-/* ── STATUS BADGE ── */
+/* ── BADGES ───────────────────────────── */
+.role-badge,
 .status-badge {
-  padding:       3px 10px;
+  padding: 0.25rem 0.6rem;
   border-radius: 20px;
-  font-size:     12px;
-  font-weight:   500;
-}
-
-.status-badge.available {
-  background: #d4edda;
-  color:      #155724;
-}
-
-.status-badge.pending {
-  background: #fff3cd;
-  color:      #856404;
-}
-
-.status-badge.swapped {
-  background: #d1ecf1;
-  color:      #0c5460;
-}
-
-.status-badge.accepted {
-  background: #d4edda;
-  color:      #155724;
-}
-
-.status-badge.declined {
-  background: #f8d7da;
-  color:      #721c24;
-}
-
-/* ── ROLE BADGE ── */
-.role-badge {
-  padding:       3px 10px;
-  border-radius: 20px;
-  font-size:     12px;
-  font-weight:   500;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
 }
 
 .role-badge.admin {
-  background: #000;
-  color:      #fff;
+  background: #7AAB8A;
+  color: white;
 }
 
 .role-badge.user {
-  background: #f0f0f0;
-  color:      #555;
+  background: #E6D3A3;
+  color: black;
 }
 
-/* ── DELETE BUTTON ── */
+.status-badge.pending {
+  background: #FFF3CD;
+  color: #856404;
+}
+
+.status-badge.accepted {
+  background: #D4EDDA;
+  color: #155724;
+}
+
+.status-badge.rejected {
+  background: #F8D7DA;
+  color: #721C24;
+}
+
+/* ── DELETE BUTTON ───────────────────── */
 .admin-delete-btn {
-  padding:       6px 14px;
-  background:    #e53935;
-  color:         #fff;
-  border:        none;
+  padding: 0.55rem 1.2rem;
+  background: black;
+  border: 1.5px solid black;
+  color: white;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
   border-radius: 6px;
-  cursor:        pointer;
-  font-size:     13px;
-  font-weight:   500;
-  transition:    background 0.2s;
+  transition: all 0.22s ease;
 }
 
 .admin-delete-btn:hover {
-  background: #c62828;
+  background: #C8A96E;
+  border-color: #C8A96E;
 }
 
 .admin-delete-btn:disabled {
-  background: #ccc;
-  cursor:     not-allowed;
+  background: white;
+  border-color: white;
+  color: black;
+  cursor: not-allowed;
 }
 
-/* ── LOADING / EMPTY ── */
-.admin-loading {
-  text-align: center;
-  padding:    40px;
-  color:      #888;
-}
-
-/* ── ACCESS DENIED ── */
+/* ── ACCESS DENIED ───────────────────── */
 .access-denied {
   text-align: center;
-  padding:    80px 20px;
+  padding: 6rem 2rem;
+  font-family: 'Cormorant Garamond', serif;
 }
 
-.access-denied h2 {
-  font-size:     32px;
-  margin-bottom: 12px;
+/* ── RESPONSIVE ───────────────────────── */
+@media (max-width: 1100px) {
+  .admin-header,
+  .admin-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.access-denied p {
-  color:   #888;
-  font-size: 16px;
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-header,
+  .admin-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }

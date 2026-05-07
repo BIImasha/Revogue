@@ -1,6 +1,6 @@
-const User = require("../models/User");
+const User   = require("../models/User");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const jwt    = require("jsonwebtoken");
 
 // ─── HELPER: Create login token ───────────────────────────
 const generateToken = (id) => {
@@ -20,7 +20,7 @@ const registerUser = async (req, res) => {
     }
 
     // Scramble the password before saving
-    const salt = await bcrypt.genSalt(10);
+    const salt           = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Save new user to database
@@ -31,10 +31,10 @@ const registerUser = async (req, res) => {
     });
 
     res.status(201).json({
-      _id: user._id,
-      name: user.name,
+      _id:   user._id,
+      name:  user.name,
       email: user.email,
-      role:  user.role, 
+      role:  user.role,
       token: generateToken(user._id)
     });
 
@@ -59,11 +59,14 @@ const loginUser = async (req, res) => {
         name:       user.name,
         email:      user.email,
         profilePic: user.profilePic,
-        role:       user.role,        // ← Add this line
+        role:       user.role,
         token:      generateToken(user._id)
       });
     } else {
-      res.status(401).json({ message: "Invalid email or password" });
+      // ── CLEAR ERROR MESSAGE ──
+      res.status(401).json({
+        message: "The email or password you entered is incorrect."
+      });
     }
 
   } catch (error) {
@@ -84,7 +87,7 @@ const forgotPassword = async (req, res) => {
     }
 
     // Hash new password and save
-    const salt = await bcrypt.genSalt(10);
+    const salt    = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(newPassword, salt);
     await user.save();
 
@@ -113,7 +116,7 @@ const updateProfile = async (req, res) => {
     const user = await User.findById(req.user._id);
 
     // Update name and email if provided
-    user.name = req.body.name || user.name;
+    user.name  = req.body.name  || user.name;
     user.email = req.body.email || user.email;
 
     // Update profile picture if uploaded
@@ -124,11 +127,11 @@ const updateProfile = async (req, res) => {
     const updatedUser = await user.save();
 
     res.json({
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      email: updatedUser.email,
+      _id:        updatedUser._id,
+      name:       updatedUser.name,
+      email:      updatedUser.email,
       profilePic: updatedUser.profilePic,
-      token: generateToken(updatedUser._id)
+      token:      generateToken(updatedUser._id)
     });
 
   } catch (error) {
