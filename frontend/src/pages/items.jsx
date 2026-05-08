@@ -19,7 +19,8 @@ function Items() {
     "Bags & Carry Items",
   ];
 
-  const [activeCategory, setActiveCategory] = useState("All");
+  const params = new URLSearchParams(window.location.search);
+  const [activeCategory, setActiveCategory] = useState(params.get("category") || "All");
   const [items,          setItems]          = useState([]);
   const [loading,        setLoading]        = useState(true);
   const [error,          setError]          = useState("");
@@ -217,6 +218,24 @@ function Items() {
                         <span className="item-meta-label">Size:</span>
                         <span className="item-meta-value">{item.size}</span>
                       </div>
+                      {item.material && (
+                      <div className="item-meta-row">
+                        <span className="item-meta-label">Material:</span>
+                        <span className="item-meta-value">{item.material}</span>
+                      </div>
+                      )}
+                      {item.color && (
+                      <div className="item-meta-row">
+                        <span className="item-meta-label">Color:</span>
+                        <span className="item-meta-value">{item.color}</span>
+                      </div>
+                      )}
+                      {item.style && (
+                      <div className="item-meta-row">
+                        <span className="item-meta-label">Style:</span>
+                        <span className="item-meta-value">{item.style}</span>
+                      </div>
+                      )}
                     </div>
 
                     <p className="item-owner">By {item.owner?.name}</p>

@@ -130,7 +130,7 @@ function Homepage() {
             <div
               className="category-card"
               key={cat.label}
-              onClick={() => (window.location.href = "/items")}
+              onClick={() => (window.location.href = `/items?category=${encodeURIComponent(cat.label)}`)}
             >
               <div className="category-card-img">
                 <img src={cat.src} alt={cat.label} />

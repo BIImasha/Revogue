@@ -141,7 +141,7 @@ function Upload() {
           </div>
 
           {/* Extra photos */}
-          {previewUrl && (
+          {/*previewUrl && (
             <label className="up-extra-photos">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -154,7 +154,7 @@ function Upload() {
                 onChange={(e) => setImages((p) => [...p, ...Array.from(e.target.files)])}
               />
             </label>
-          )}
+          )*/}
 
           {/* AI banners */}
           {analyzing && (
