@@ -16,7 +16,7 @@ const app = express();
 // ─── MIDDLEWARE ───────────────────────────────────────────
 // Allows frontend to talk to backend
 app.use(cors({
-  origin: "http://localhost:5173", // Your React app address
+  origin: "https://willowy-mooncake-2066ef.netlify.app", // Your React app address
   credentials: true
 }));
 
