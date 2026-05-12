@@ -4,7 +4,7 @@ import Navbar          from "../components/navbar";
 import Footer          from "../components/footer";
 import axiosInstance   from "../api/axiosInstance";
 import Discussion      from "../components/Discussion";
-import SwapDetailModal from "../components/SwapdetailModal";
+import SwapDetailModal from "../components/SwapDetailModal";
 
 const Requests = () => {
   const [requests,     setRequests]     = useState([]);
