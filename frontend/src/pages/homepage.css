@@ -77,7 +77,7 @@ section {
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 92vh;
+  min-height: 50vh;
   overflow: hidden;
 }
 
@@ -87,7 +87,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 6rem 5rem 6rem 6rem;
+  padding: 3rem 4rem 3rem 5rem;
   position: relative;
   animation: fadeUp 0.9s ease both;
 }
@@ -107,11 +107,12 @@ section {
 
 .hero-left h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  font-weight: 300;
+  font-size: 80px;
+  font-weight: 550;
   color: black;
   line-height: 1.05;
-  margin-bottom: 2rem;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-left h1 em {
@@ -122,8 +123,8 @@ section {
 
 .hero-left h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 25px;
-  font-weight: 500;
+  font-size: 35px;
+  font-weight: 550;
   font-style: italic;
   color: #1A1610;
   margin-bottom: 1.6rem;
@@ -148,11 +149,11 @@ section {
 .explore-btn {
   padding: 0.75rem 2rem;
   background: transparent;
-  border: 1px solid var(--sage);
+  border: 2px solid var(--sage);
   color: var(--sage);
   font-family: 'Jost', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 500;
+  font-size: 0.70rem;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   cursor: pointer;
@@ -162,6 +163,7 @@ section {
 .explore-btn:hover {
   background: var(--sage);
   color: var(--ink);
+  border: 1px solid var(--muted);
 }
 
 .impact-btn {
@@ -170,8 +172,8 @@ section {
   color: var(--ink);
   border: 1px solid var(--muted);
   font-family: 'Jost', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 500;
+  font-size: 0.70rem;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   cursor: pointer;
@@ -180,7 +182,7 @@ section {
 
 .impact-btn:hover {
   background: transparent;
-  border: 1px solid var(--sage);
+  border: 2px solid var(--sage);
   color: var(--sage);
 
 }
@@ -198,13 +200,13 @@ section {
 }
 
 .hero-image {
-  width: 800px;
-  height: 700px;
+  width: 700px;
+  height: 550px;
 }
 
 .hero-image img {
-  width: 100%;
-  height: 100%;
+  width: 800px;
+  height: 600px;
   object-fit: cover;
   display: block;
   filter: brightness(0.75) saturate(0.85);
@@ -241,11 +243,11 @@ section {
 .why-section h2 em {
   color: var(--sage);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 580;
 }
 
 .why-sub {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 300;
   letter-spacing: 0.05em;
   color: black;
@@ -325,10 +327,10 @@ section {
 .category-section-header h2 em {
   color: var(--sage);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 580;
 }
 .category-section-header p {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 300;
   letter-spacing: 0.05em;
   color: black;
@@ -400,11 +402,11 @@ section {
 .review-section h2 em {
   color: var(--sage);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 580;
 }
 
 .review-sub {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 300;
   letter-spacing: 0.05em;
   color:black;
@@ -420,9 +422,14 @@ section {
   position: relative;
   transition: background 0.3s;
 }
-
-.review-card:hover {
-  background: var(--ink-mid);
+.review-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
 }
 
 .review-card-quote {
@@ -437,7 +444,7 @@ section {
 
 .review-card p {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 300;
   font-style: italic;
   line-height: 1.6;
@@ -497,4 +504,124 @@ section {
   .rewear-section,
   .category-section,
   .review-section { padding: 4rem 1.5rem; }
+}
+/* =========================
+   MOBILE RESPONSIVE FIXES
+========================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero-image,
+.hero-image img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+
+  .hero-left h1 {
+    font-size: 56px;
+  }
+
+  .hero-left h2 {
+    font-size: 28px;
+  }
+
+  .hero-left p {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  .why-grid,
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-left {
+    padding: 2rem 1.5rem;
+    order: 2;
+  }
+
+  .hero-right {
+    order: 1;
+    height: 60vw;
+    min-height: 280px;
+  }
+
+  .hero-left h1 {
+    font-size: 42px;
+    line-height: 1.1;
+  }
+
+  .hero-left h2 {
+    font-size: 24px;
+  }
+
+  .hero-left p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .hero-btns {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .explore-btn,
+  .impact-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .why-section,
+  .rewear-section,
+  .category-section,
+  .review-section {
+    padding: 3rem 1rem;
+  }
+
+  .why-grid,
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-grid {
+    flex-direction: column;
+  }
+
+  .review-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hero-left h1 {
+    font-size: 34px;
+  }
+
+  .hero-left h2 {
+    font-size: 20px;
+  }
+
+  .section-label {
+    font-size: 10px;
+  }
+
+  .why-sub,
+  .review-sub {
+    font-size: 14px;
+  }
 }

@@ -62,7 +62,7 @@
 .items-header h1 em {
   color: #7AAB8A;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 580;
 }
 
 .items-header-divider {
@@ -77,7 +77,7 @@
 }
 
 .items-header-sub {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 300;
   letter-spacing: 0.05em;
   color: black;
@@ -101,7 +101,7 @@
   display: flex;
   max-width: 500px;
   width: 100%;
-  border: 1.5px solid black;
+  border: 2px solid black;
   border-radius: 8px;
   overflow: hidden;
   background: var(--warm-white);
@@ -131,7 +131,7 @@
   border: none;
   border-left: 1px solid var(--border-light);
   padding: 0 0.9rem;
-  color: var(--muted-light);
+  color: black;
   cursor: pointer;
   font-size: 0.8rem;
   transition: color 0.2s;
@@ -189,7 +189,7 @@
   border: 1.5px solid black;
   color: var(--muted);
   font-family: 'Jost', sans-serif;
-  font-size: 0.58rem;
+  font-size: 0.70rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -202,12 +202,14 @@
   border-color: #C8A96E;
   color: #C8A96E;
   background: var(--gold-pale);
+  font-weight: 500;
 }
 
 .filter-btn.active {
   background: var(--moss);
   border-color: var(--moss);
   color: #C8A96E;
+  font-weight: 500;
 }
 
 /* ── SUCCESS BANNER ─────────────────────────────── */
@@ -452,4 +454,56 @@
 
 @media (max-width: 480px) {
   .items-grid { grid-template-columns: 1fr; }
+}
+/* =========================
+   RESPONSIVE ITEMS PAGE
+========================= */
+
+@media (max-width: 1024px) {
+
+  .items-grid,
+  .products-grid,
+  .item-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .filters-section {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .items-container,
+  .items-page {
+    padding: 1rem;
+  }
+
+  .items-grid,
+  .products-grid,
+  .item-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .item-card,
+  .product-card {
+    width: 100%;
+  }
+
+  .filters-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar,
+  .filter-select {
+    width: 100%;
+  }
+
+  .item-image img {
+    height: auto;
+    object-fit: cover;
+  }
 }

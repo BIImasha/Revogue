@@ -37,9 +37,10 @@
   position: relative;
   z-index: 1;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 3.8rem;
+  font-size: 5rem;
   font-style: italic;
   color: #C8A96E;
+  font-weight: 500;
 }
 
 /* ── QUOTE ──────────────────────────────────── */
@@ -52,10 +53,12 @@
 .signup-quote p {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2rem, 3vw, 3rem);
-  font-weight: 300;
+  font-weight: 400;
   color: #C8A96E;
   line-height: 1.2;
-  margin-bottom: 10rem;
+  margin-bottom: 14rem;
+  padding-left: 20px;
+  
 }
 
 .signup-quote h6 {
@@ -168,6 +171,7 @@
 .password-wrapper input {
   width: 100%;
   padding-right: 3rem;
+  font-weight: 400;
 }
 
 .password-wrapper span {
@@ -219,5 +223,33 @@
 
   .signup-left {
     min-height: 250px;
+  }
+}
+/* =========================
+   RESPONSIVE SIGNUP PAGE
+========================= */
+
+@media (max-width: 768px) {
+
+  .signup-container {
+    padding: 1rem;
+  }
+
+  .signup-box {
+    width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .signup-form {
+    gap: 1rem;
+  }
+
+  .signup-form input,
+  .signup-form select {
+    width: 100%;
+  }
+
+  .signup-btn {
+    width: 100%;
   }
 }

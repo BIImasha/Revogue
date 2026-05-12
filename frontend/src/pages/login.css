@@ -47,9 +47,9 @@
   position: relative;
   z-index: 1;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 4rem;
+  font-size: 5rem;
   font-style: italic;
-  font-weight: 300;
+  font-weight: 500;
   color: #C8A96E;
   letter-spacing: 0.04em;
 }
@@ -63,20 +63,12 @@
 
 .panel-quote-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: 50px;
   line-height: 1.18;
-  font-weight: 300;
+  font-weight: 400;
   color:#C8A96E ;
-  margin-bottom: 1.2rem;
-}
-
-.panel-quote-attr {
-  display: inline-block;
-  color: #C8A96E;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  margin-bottom: 5rem;
+  
 }
 
 /* ── RIGHT PANEL ──────────────────────────────── */
@@ -149,7 +141,7 @@
   border-left: 3px solid var(--declined);
   border-radius: 8px;
   background: rgba(180,70,70,0.08);
-  color: var(--declined);
+  color: red;
   font-size: 0.74rem;
   line-height: 1.6;
 }
@@ -205,6 +197,7 @@
 
 .password-wrapper input {
   padding-right: 3rem;
+  font-weight: 400;
 }
 
 .password-toggle {
@@ -355,5 +348,32 @@
 
   .login-card h2 {
     font-size: 2.2rem;
+  }
+}
+/* =========================
+   RESPONSIVE LOGIN PAGE
+========================= */
+
+@media (max-width: 768px) {
+
+  .login-container {
+    padding: 1rem;
+  }
+
+  .login-box {
+    width: 100%;
+    padding: 2rem 1.5rem;
+  }
+
+  .login-box h1 {
+    font-size: 28px;
+  }
+
+  .login-form input {
+    width: 100%;
+  }
+
+  .login-btn {
+    width: 100%;
   }
 }

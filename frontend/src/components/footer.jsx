@@ -1,7 +1,7 @@
 import React from "react";
 import "./footer.css";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaYoutube, FaEnvelope } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -22,11 +22,11 @@ function Footer() {
         <div className="footer-middle">
           <h3>Quick Links</h3>
           <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/items">Items</Link></li>
-              <li><Link to="/upload">Upload</Link></li>
-              <li><Link to="/requests">Requests</Link></li>
-              <li><Link to="/profile">Profile</Link></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/items">Items</Link></li>
+            <li><Link to="/upload">Upload</Link></li>
+            <li><Link to="/requests">Requests</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
           </ul>
         </div>
 
@@ -34,10 +34,21 @@ function Footer() {
         <div className="footer-right">
           <h3>Connect With Us</h3>
           <div className="social-icons">
+
             <FaFacebookF />
+
             <FaInstagram />
+
             <FaYoutube />
-            <FaTwitter />
+
+            {/* EMAIL ICON (CLICKABLE) */}
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=avabrooks0220@gmail.com"
+             target="_blank"
+             rel="noopener noreferrer"
+             className="social-icon">
+  <FaEnvelope />
+</a>
+
           </div>
         </div>
 

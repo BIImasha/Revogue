@@ -51,9 +51,8 @@ function Login() {
           <div className="panel-quote">
            
             <p className="panel-quote-text">
-              "Fashion is the armour to survive the reality of everyday life."
+              "The fashion items you no longer wear could be someone else's favourite."
             </p>
-            <span className="panel-quote-attr">— Bill Cunningham</span>
           </div>
         </div>
 

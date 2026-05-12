@@ -66,7 +66,7 @@
 .upload-header h1 em {
   color: #7AAB8A;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 580;
 }
 
 .upload-header-divider {
@@ -81,7 +81,7 @@
 }
 
 .upload-header-sub {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 300;
   letter-spacing: 0.05em;
   color: black;
@@ -448,5 +448,39 @@
   .up-preview-img {
     min-height: 260px;
     height: 260px;
+  }
+}
+/* =========================
+   RESPONSIVE UPLOAD PAGE
+========================= */
+
+@media (max-width: 768px) {
+
+  .upload-container {
+    padding: 1rem;
+  }
+
+  .upload-form {
+    padding: 1.2rem;
+  }
+
+  .upload-form input,
+  .upload-form textarea,
+  .upload-form select {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .upload-preview img {
+    width: 100%;
+    height: auto;
+  }
+
+  .upload-buttons {
+    flex-direction: column;
+  }
+
+  .upload-buttons button {
+    width: 100%;
   }
 }

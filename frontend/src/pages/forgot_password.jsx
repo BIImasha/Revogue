@@ -60,9 +60,8 @@ function ForgotPassword() {
 
           <div className="forgot-quote">
             <p>
-              "Every change starts with a single step toward sustainability."
+              “Fashion becomes powerful when it respects the planet that inspires it.”
             </p>
-            <span>Reset your account securely</span>
           </div>
         </div>
 

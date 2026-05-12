@@ -66,7 +66,7 @@
 .profile-header h1 em {
   color: #7AAB8A;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 580;
 }
 
 .profile-header-divider {
@@ -81,7 +81,7 @@
 }
 
 .profile-header-sub {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 300;
   letter-spacing: 0.05em;
   color: black;
@@ -110,8 +110,8 @@
 .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
-  font-weight: 400;
-  color: var(--ink);
+  font-weight: 650;
+  color: black;
   margin-bottom: 0.5rem;
 }
 
@@ -524,5 +524,53 @@
 
   .profile-info h3 {
     font-size: 1.6rem;
+  }
+}
+/* =========================
+   RESPONSIVE PROFILE PAGE
+========================= */
+
+@media (max-width: 1024px) {
+
+  .profile-container {
+    padding: 2rem;
+  }
+
+  .profile-content {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .profile-container {
+    padding: 1rem;
+  }
+
+  .profile-content {
+    flex-direction: column;
+  }
+
+  .profile-sidebar,
+  .profile-main {
+    width: 100%;
+  }
+
+  .profile-card {
+    padding: 1rem;
+  }
+
+  .profile-image img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .profile-actions button {
+    width: 100%;
   }
 }

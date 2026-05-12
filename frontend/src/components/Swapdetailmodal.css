@@ -318,3 +318,172 @@
     transform: rotate(90deg);
   }
 }
+/* =========================
+   RESPONSIVE SWAP DETAIL MODAL
+========================= */
+
+.swap-detail-modal *,
+.swap-detail-overlay *,
+.swap-detail-content * {
+  box-sizing: border-box;
+}
+
+.swap-detail-overlay {
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.swap-detail-content img,
+.swap-detail-modal img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.swap-detail-body,
+.swap-detail-section {
+  overflow-x: hidden;
+}
+
+.swap-detail-buttons button,
+.swap-detail-actions button {
+  cursor: pointer;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1024px) {
+
+  .swap-detail-content,
+  .swap-detail-modal {
+    width: 92%;
+    max-width: 760px;
+  }
+
+  .swap-detail-grid,
+  .swap-detail-layout {
+    gap: 1.5rem;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .swap-detail-overlay {
+    align-items: flex-start;
+    padding: 0.8rem;
+  }
+
+  .swap-detail-content,
+  .swap-detail-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: 95vh;
+    overflow-y: auto;
+    border-radius: 16px;
+  }
+
+  .swap-detail-header {
+    padding: 1rem;
+  }
+
+  .swap-detail-header h2,
+  .swap-detail-title {
+    font-size: 20px;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+
+  .swap-detail-body {
+    padding: 1rem;
+  }
+
+  .swap-detail-grid,
+  .swap-detail-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .swap-detail-images,
+  .swap-detail-info {
+    width: 100%;
+  }
+
+  .swap-detail-images img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .swap-detail-description,
+  .swap-detail-info p,
+  .swap-detail-message {
+    font-size: 14px;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+
+  .swap-detail-buttons,
+  .swap-detail-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .swap-detail-buttons button,
+  .swap-detail-actions button {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .swap-detail-close {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .swap-detail-content,
+  .swap-detail-modal {
+    border-radius: 14px;
+  }
+
+  .swap-detail-header {
+    padding: 0.9rem;
+  }
+
+  .swap-detail-header h2,
+  .swap-detail-title {
+    font-size: 18px;
+  }
+
+  .swap-detail-body {
+    padding: 0.9rem;
+  }
+
+  .swap-detail-description,
+  .swap-detail-info p,
+  .swap-detail-message {
+    font-size: 13px;
+  }
+
+  .swap-detail-buttons button,
+  .swap-detail-actions button {
+    font-size: 14px;
+    padding: 0.8rem;
+  }
+}

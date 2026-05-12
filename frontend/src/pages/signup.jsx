@@ -61,7 +61,6 @@ function Signup() {
             <p>
               "Sustainable fashion is not a trend, it's a responsibility."
             </p>
-            <h6>— Revogue Community</h6>
           </div>
         </div>
 

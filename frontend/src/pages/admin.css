@@ -43,7 +43,7 @@
 .admin-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 300;
+  font-weight: 500;
   color: black;
   line-height: 1.05;
   position: relative;
@@ -53,6 +53,7 @@
 .admin-title em {
   color: #7AAB8A;
   font-style: italic;
+  font-weight: 580;
 }
 
 .admin-header-divider {
@@ -67,7 +68,7 @@
 }
 
 .admin-subtitle {
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 300;
   letter-spacing: 0.05em;
   color: black;
@@ -115,7 +116,7 @@
   border: 1.5px solid black;
   color: var(--muted);
   font-family: 'Jost', sans-serif;
-  font-size: 0.58rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -140,8 +141,8 @@
 .admin-section-title {
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  font-weight: 300;
+  font-size: 2rem;
+  font-weight: 400;
   margin-bottom: 1.5rem;
   color: var(--ink);
 }
@@ -183,8 +184,8 @@
 
 .stat-number {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 600;
   color: black;
 }
 
@@ -341,5 +342,46 @@
 @media (max-width: 480px) {
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   RESPONSIVE ADMIN PAGE
+========================= */
+
+@media (max-width: 1024px) {
+
+  .dashboard-grid,
+  .admin-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .admin-container {
+    padding: 1rem;
+  }
+
+  .dashboard-grid,
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-table {
+    overflow-x: auto;
+    display: block;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  .admin-actions {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .admin-actions button {
+    width: 100%;
   }
 }

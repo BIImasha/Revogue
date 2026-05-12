@@ -40,3 +40,48 @@
 .read-the-docs {
   color: #888;
 }
+/* =========================
+   GLOBAL RESPONSIVE HELPERS
+========================= */
+
+.container,
+.wrapper,
+.page-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+table {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 32px !important;
+  }
+
+  h2 {
+    font-size: 26px !important;
+  }
+
+  h3 {
+    font-size: 22px !important;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}

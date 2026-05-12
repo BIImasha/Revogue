@@ -184,10 +184,10 @@ function Sustainability() {
           </div>
 
           {/* Pie chart */}
-          <div className="chart-panel">
-            <p className="chart-panel-title">
-              Items Reused by <em>Category</em>
+          <p className="chart-panel-title">
+              Items Reused by Category
             </p>
+          <div className="chart-panel">
             {pieData.length === 0 ? (
               <p className="chart-empty">No swaps in selected categories yet.</p>
             ) : (
@@ -329,7 +329,6 @@ function Sustainability() {
           <div className="sustain-block-divider" />
 
           <div className="sources-card">
-            <h3>Research <em>Sources</em></h3>
             <p className="sources-intro">
               All sustainability figures are based on peer-reviewed academic research.
             </p>
