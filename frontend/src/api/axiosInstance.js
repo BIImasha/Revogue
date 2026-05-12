@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api", // Your backend address
+  baseURL: "https://revogue-api.onrender.com/api", // Your backend address
 });
 
 // This automatically adds the login token to every request
