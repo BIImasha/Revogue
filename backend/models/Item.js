@@ -6,20 +6,20 @@ const itemSchema = new mongoose.Schema(
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true
+      
     },
     title: {
       type: String,
-      required: true,
+      
       trim: true
     },
     description: {
       type: String,
-      required: true
+      
     },
     category: {
       type: String,
-      required: true,
+      
       enum: [
         "Women's Clothing",
         "Men's Clothing",
@@ -33,7 +33,7 @@ const itemSchema = new mongoose.Schema(
     },
     condition: {
       type: String,
-      required: true,
+      
       enum: ["Like New", "Excellent", "Good", "Fair"]
     },
     size: {
