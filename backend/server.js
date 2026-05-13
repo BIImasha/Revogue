@@ -16,7 +16,7 @@ const app = express();
 // ─── MIDDLEWARE ───────────────────────────────────────────
 // Allows frontend to talk to backend
 app.use(cors({ 
-  origin: "https://willowy-mooncake-2066ef.netlify.app",
+  origin: "https://revogue-fashion-swap.netlify.app",
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 
