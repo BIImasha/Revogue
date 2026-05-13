@@ -8,7 +8,7 @@ const uploadItem = async (req, res) => {
 
   try {
     const images = req.files
-  ? req.files.map((file) => file.path)
+  ? req.files.map((file) => file.secure_url || file.path)
   : [];
 
     const item = await Item.create({
