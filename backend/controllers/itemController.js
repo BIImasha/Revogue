@@ -12,7 +12,7 @@ const uploadItem = async (req, res) => {
   : [];
 
     const item = await Item.create({
-      owner: "6823f8d2a4b7c123456789ab",
+      /*owner: "6823f8d2a4b7c123456789ab",*/
       title,
       description,
       category,

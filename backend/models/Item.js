@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const itemSchema = new mongoose.Schema(
   {
     // Who uploaded this item
-    owner: {
+    /*owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       
-    },
+    },*/
     title: {
       type: String,
       
