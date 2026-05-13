@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./sustainability.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import axios from "axios";
+import axiosInstance from "../api/axiosInstance";
 import {
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer
 } from "recharts";
@@ -59,7 +59,7 @@ function Sustainability() {
 
   const fetchSustainabilityData = async () => {
     try {
-      const res = await axios.get("/admin/sustainability/public");
+      const res = await axiosInstance.get("/admin/sustainability/public");
       setData(res.data);
     } catch {
       setError("Failed to load sustainability data.");
