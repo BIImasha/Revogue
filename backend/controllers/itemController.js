@@ -3,13 +3,14 @@ const Item = require("../models/Item");
 // ─── UPLOAD ITEM ──────────────────────────────────────────
 // POST /api/items
 const uploadItem = async (req, res) => {
-  // Now also accepts material, color, style from the form
   const { title, description, category, condition, size, material, color, style } = req.body;
 
   try {
+    console.log("Files received:", JSON.stringify(req.files, null, 2));
+    
     const images = req.files
-  ? req.files.map((file) => file.secure_url || file.path)
-  : [];
+      ? req.files.map((file) => file.secure_url || file.path)
+      : [];
 
     const item = await Item.create({
       owner: req.user._id,
