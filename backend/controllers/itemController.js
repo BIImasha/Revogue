@@ -8,8 +8,8 @@ const uploadItem = async (req, res) => {
 
   try {
     const images = req.files
-      ? req.files.map((file) => `/uploads/${file.filename}`)
-      : [];
+  ? req.files.map((file) => file.path)
+  : [];
 
     const item = await Item.create({
       owner: req.user._id,
