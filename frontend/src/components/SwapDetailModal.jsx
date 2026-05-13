@@ -17,7 +17,7 @@ function SwapDetailModal({ swap, currentUserId, onClose, onAccept, onDecline, on
       <div className="sdm-img-wrap">
         {item?.images?.length > 0 ? (
           <img
-            src={`http://localhost:5000${item.images[0]}`}
+            src={item.images[0]}
             alt={item?.title}
             className="sdm-img"
           />

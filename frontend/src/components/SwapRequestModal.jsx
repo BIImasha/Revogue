@@ -182,7 +182,7 @@ function SwapRequestModal({ selectedItem, onClose, onSuccess }) {
             selectedItem.images.length > 0 ? (
 
               <img
-                src={`http://localhost:5000${selectedItem.images[0]}`}
+                src={selectedItem.images[0]}
                 alt={selectedItem.title}
                 style={{
                   width: "80px",

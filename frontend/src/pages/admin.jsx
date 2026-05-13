@@ -267,7 +267,7 @@ function Admin() {
                         <td>
                           {item.images && item.images.length > 0 ? (
                             <img
-                              src={`http://localhost:5000${item.images[0]}`}
+                              src={item.images[0]}
                               alt={item.title}
                               className="admin-item-img"
                             />

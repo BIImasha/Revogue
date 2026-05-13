@@ -197,7 +197,7 @@ const Profile = () => {
                 <div className="wardrobe-card" key={item._id}>
                   <div className="wardrobe-image">
                     {item.images && item.images.length > 0 ? (
-                      <img src={`http://localhost:5000${item.images[0]}`} alt={item.title} />
+                      <img src={item.images[0]} alt={item.title} />
                     ) : null}
                   </div>
                   <div className="wardrobe-card-body">
