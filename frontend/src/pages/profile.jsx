@@ -140,7 +140,7 @@ const Profile = () => {
         <div className="profile-card">
           <div className="profile-avatar">
             {user.profilePic ? (
-              <img src={`http://localhost:5000${user.profilePic}`} alt="Profile" />
+              <img src={user.profilePic} alt="Profile" />
             ) : (
               <div className="avatar-placeholder" />
             )}

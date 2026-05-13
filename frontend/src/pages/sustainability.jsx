@@ -59,7 +59,7 @@ function Sustainability() {
 
   const fetchSustainabilityData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/sustainability/public");
+      const res = await axios.get("/admin/sustainability/public");
       setData(res.data);
     } catch {
       setError("Failed to load sustainability data.");
