@@ -15,9 +15,11 @@ const app = express();
 
 // ─── MIDDLEWARE ───────────────────────────────────────────
 // Allows frontend to talk to backend
-app.use(cors({
-  origin: "https://willowy-mooncake-2066ef.netlify.app", // Your React app address
-  credentials: true
+app.use(cors({ 
+  origin: "https://willowy-mooncake-2066ef.netlify.app",
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+
 }));
 
 // Allows backend to read JSON data sent from frontend
