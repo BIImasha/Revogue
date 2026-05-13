@@ -60,7 +60,7 @@ function Homepage() {
 
         <div className="hero-right">
           <div className="hero-image">
-            <img src="/src/assets/homepg1.jpg" alt="Sustainable fashion" />
+            <img src="/images/homepg1.jpg"alt="Sustainable fashion" />
           </div>
         </div>
       </section>
@@ -118,14 +118,14 @@ function Homepage() {
 
         <div className="category-grid">
           {[
-            { src: "/src/assets/women_clothing.jpg",        label: "Women's Clothing" },
-            { src: "/src/assets/men_clothing.jpg",          label: "Men's Clothing" },
-            { src: "/src/assets/kids_clothing.png",         label: "Kids' Clothing" },
-            { src: "/src/assets/footwear.jpg",              label: "Footwear" },
-            { src: "/src/assets/accessories.png",           label: "Accessories" },
-            { src: "/src/assets/jewelry.jpg",               label: "Jewelry" },
-            { src: "/src/assets/outwear&seasonalwear.png",  label: "Outerwear & Seasonal" },
-            { src: "/src/assets/bags&carryitems.png",       label: "Bags & Carry Items" },
+            { src: "/images/women_clothing.jpg",        label: "Women's Clothing" },
+            { src: "/images/men_clothing.jpg",          label: "Men's Clothing" },
+            { src: "/images/kids_clothing.png",         label: "Kids' Clothing" },
+            { src: "/images/footwear.jpg",              label: "Footwear" },
+            { src: "/images/accessories.png",           label: "Accessories" },
+            { src: "/images/jewelry.jpg",               label: "Jewelry" },
+            { src: "/images/outwear&seasonalwear.png",  label: "Outerwear & Seasonal" },
+            { src: "/images/bags&carryitems.png",       label: "Bags & Carry Items" },
           ].map((cat) => (
             <div
               className="category-card"

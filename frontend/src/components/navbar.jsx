@@ -35,7 +35,7 @@ function Navbar() {
 
         <div className="logo">
           <Link to="/">
-            <img src={logo} alt="Revogue" className="logo-img" />
+            <img src="/images/logo.png" alt="Revogue" className="logo-img" />
           </Link>
         </div>
 
