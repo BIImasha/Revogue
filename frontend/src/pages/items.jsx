@@ -193,7 +193,7 @@ function Items() {
                   <div className="item-image">
                     {item.images && item.images.length > 0 ? (
                       <img
-                        src={`http://localhost:5000${item.images[0]}`}
+                        src={`https://revogue-api.onrender.com${item.images[0]}`}
                         alt={item.title}
                       />
                     ) : (

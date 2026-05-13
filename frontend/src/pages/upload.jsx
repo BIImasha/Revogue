@@ -118,10 +118,7 @@ function Upload() {
             {previewUrl ? (
               <div className="up-preview-wrap">
                 <img src={previewUrl} alt="Item preview" className="up-preview-img" />
-                <label className="up-reselect">
-                  Change Photo
-                  <input type="file" accept="image/*" onChange={handleImageChange} hidden />
-                </label>
+                
               </div>
             ) : (
               <label className="up-drop-label">
