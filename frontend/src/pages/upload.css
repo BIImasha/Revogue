@@ -358,7 +358,7 @@
 
 .up-msg.error {
   background: rgba(180, 70, 70, 0.08);
-  color: var(--declined);
+  color:red;
   border-left: 3px solid var(--declined);
 }
 
