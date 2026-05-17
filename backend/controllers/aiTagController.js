@@ -1,6 +1,4 @@
 console.log("Gemini Key loaded:", process.env.GEMINI_API_KEY ? "YES" : "NO - KEY MISSING");
-const fs   = require("fs");
-const path = require("path");
 
 // ─── ANALYZE IMAGE WITH GEMINI 1.5 FLASH ──────────────────
 // POST /api/items/analyze-image
@@ -112,10 +110,6 @@ Return ONLY the JSON. No explanation. No markdown. Just the raw JSON object.`;
     if (!validCategories.includes(tags.category)) tags.category  = "";
     if (!validConditions.includes(tags.condition)) tags.condition = "";
     if (!validSizes.includes(tags.size))           tags.size      = "N/A";
-
-    // Clean up temp uploaded file after reading
-    // (the user will upload the real image when they submit the form)
-    fs.unlinkSync(imagePath);
 
     // Return the tags to the frontend
     res.json({
