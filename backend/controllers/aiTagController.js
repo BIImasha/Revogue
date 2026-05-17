@@ -13,10 +13,8 @@ const analyzeImage = async (req, res) => {
     }
 
     // Read the uploaded image file and convert to base64
-    const imagePath   = req.file.path;
-    const imageBuffer = fs.readFileSync(imagePath);
-    const base64Image = imageBuffer.toString("base64");
-    const mimeType    = req.file.mimetype; // e.g. "image/jpeg"
+    const base64Image = req.file.buffer.toString("base64");
+    const mimeType    = req.file.mimetype;
 
     // ── GEMINI API REQUEST ─────────────────────────────────
     const geminiUrl =

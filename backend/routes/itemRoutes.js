@@ -14,17 +14,8 @@ const {
 const { analyzeImage } = require("../controllers/aiTagController");
 const { protect }      = require("../middleware/authMiddleware");
 
-// ── STORAGE FOR AI ANALYSIS (temporary local) ──────────────────────
-const tempStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const tempDir = path.join(__dirname, "../uploads/temp");
-    if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
-    cb(null, tempDir);
-  },
-  filename: (req, file, cb) =>
-    cb(null, "temp-" + Date.now() + path.extname(file.originalname))
-});
-const uploadTemp = multer({ storage: tempStorage });
+// ── STORAGE FOR AI ANALYSIS (memory) ───────────────────────────────
+const uploadTemp = multer({ storage: multer.memoryStorage() });
 
 // ── PUBLIC ROUTES ───────────────────────────────────────────────────
 router.get("/", getAllItems);
