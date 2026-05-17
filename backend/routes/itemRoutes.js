@@ -28,11 +28,18 @@ router.post(
   analyzeImage
 );
 
-// Upload a new item using Cloudinary
 router.post(
   "/",
   protect,
-  upload.array("images", 5),
+  (req, res, next) => {
+    upload.array("images", 5)(req, res, (err) => {
+      if (err) {
+        console.error("Multer/Cloudinary upload error:", err.message, err);
+        return res.status(500).json({ message: err.message });
+      }
+      next();
+    });
+  },
   uploadItem
 );
 
