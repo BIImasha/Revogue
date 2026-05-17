@@ -26,8 +26,8 @@ const uploadItem = async (req, res) => {
     });
 
     res.status(201).json(item);
-
-  } catch (error) {
+    } catch (error) {
+    console.error("uploadItem error:", error.message, error.stack);
     res.status(500).json({ message: error.message });
   }
 };
