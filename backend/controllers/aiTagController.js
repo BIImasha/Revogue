@@ -60,7 +60,7 @@ Return ONLY the JSON. No explanation. No markdown. Just the raw JSON object.`;
         ],
         generationConfig: {
           temperature:     0.1,  // Low temperature = more consistent output
-          maxOutputTokens: 500
+          maxOutputTokens: 1024
         }
       })
     });
